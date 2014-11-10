@@ -13,8 +13,7 @@ public class Game
     private Hero thisHero;
     private Weapon thisWeapon;
     private Monster thisMonster;
-    private FloorGenerator thisFG;
-    
+    private Room thisRoom;
 
     private int currentHealth;
     private Weapon currentWeapon;
@@ -27,14 +26,12 @@ public class Game
     private HashMap<String, Monster> monsterpedia;
     
     private Parser parser;
+    
+    private ArrayList<Room> floor1;
 
     
     public Game()
     {
-        thisFG = new FloorGenerator();
-        ArrayList<Room> currentFloor = thisFG.getFloor2();
-        
-        
         //creates an armory HashMap full of weapons
         armory = new HashMap<String, Weapon>();
         createArmory();
@@ -45,6 +42,7 @@ public class Game
         monsterSpawn = new Random();
         
         createRooms();
+        currentRoom = floor1.get(0);
         parser = new Parser();
     }
 
@@ -173,6 +171,9 @@ public class Game
             System.out.println("Armed with only your "+currentWeapon.getDesc());
             System.out.println("Your goal is to rescue the princess at the top of the castle");
         }
+        System.out.println("");
+        System.out.println("You have just enterd the Dark Castle, and you begin to look around");
+        System.out.println(currentRoom.getExitString());
     }
     
     //this method will create a list of weapons/shields we can pull from
@@ -324,31 +325,45 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theater, pub, lab, office;
-        
-        // create the rooms
-        outside = new Room("outside the main entrance of the university");
-        theater = new Room("in a lecture theater");
-        pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        
-        // initialise room exits
-        outside.setExit("east", theater);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-        //example of how to add weapons/monsters to a room;
-        //there is a HashMap in Room that lets us store Items
-
-        theater.setExit("west", outside);
-        theater.addItem("knife",armory.get("knife"));
-
-        pub.setExit("east", outside);
-
-        lab.setExit("north", outside);
-
-
-        currentRoom = outside;  // start game outside
-        
-        
+        createFloor1();
+    }
+    
+    private void createFloor1()
+    {
+        floor1 = new ArrayList<Room>();
+        //creating rooms
+        Room a, b, c, d, e, f, g;
+        a = new Room("room #1");
+        b = new Room("room #2");
+        c = new Room("room #3");
+        d = new Room("room #4");
+        e = new Room("room #5");
+        f = new Room("room #6");
+        g = new Room("room #7");
+        //setting exits
+        a.setExit("north", b);
+        b.setExit("north", c);
+        b.setExit("south", a);
+        c.setExit("north", d);
+        c.setExit("south", b);
+        c.setExit("east", e);
+        d.setExit("south", c);
+        e.setExit("east", f);
+        e.setExit("west", d);
+        f.setExit("north", g);
+        f.setExit("west", e);
+        g.setExit("south",f);
+        //this is where we will establish what is in each room
+        //this is just a sample item
+        Item thisItem = new Item("ball",0,0);
+        a.addItem("ball",thisItem);
+        //adding the floors to the ArrayList
+        floor1.add(a);
+        floor1.add(b);
+        floor1.add(c);
+        floor1.add(d);
+        floor1.add(e);
+        floor1.add(f);
+        floor1.add(g);
     }
 }

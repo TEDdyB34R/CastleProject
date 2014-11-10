@@ -1,0 +1,61 @@
+
+/**
+ * Write a description of class Item here.
+ * 
+ * @author Ethan Dowler
+ * @version this is to practice with inheritance and make the code better
+ */
+public class Item
+{
+    // instance variables - replace the example below with your own
+    private String desc;
+    private int power;
+    private int defense;
+
+    /**
+     * Constructor for objects of class Item
+     */
+    public Item(String pDesc, int pPower, int pDefense)
+    {
+        desc = pDesc;
+        power = pPower;
+        defense = pDefense;
+    }
+    
+    public void print()
+    {
+        System.out.println(desc);
+        System.out.print("Power: "+power+"   ");
+        System.out.println("Defense: "+defense);
+    }
+
+    public String getDesc()
+    {
+        return desc;
+    }
+    
+    public int getPower()
+    {
+        return power;
+    }
+
+    public int getDefense()
+    {
+       return defense; 
+    }
+    
+    public void changeDesc(String newDesc)
+    {
+        desc = newDesc;
+    }
+    
+    public void addPower(int pPower)
+    {
+        power += pPower;
+    }
+    
+    public void addDefense(int pDefense)
+    {
+        defense += pDefense;
+    }
+}

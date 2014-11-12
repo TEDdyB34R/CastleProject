@@ -24,5 +24,5 @@ comment7.target=void\ changeDescription(java.lang.String)
 comment8.params=key\ newItem
 comment8.target=void\ addItem(java.lang.String,\ Item)
 comment9.params=
-comment9.target=java.lang.String\ roomContents()
+comment9.target=java.lang.String\ getRoomContentsDesc()
 numComments=10

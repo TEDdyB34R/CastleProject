@@ -10,7 +10,7 @@ public class Weapon extends Item
     private String desc;
     private int power;
     private int defense;
-    
+
     /**
      * Constructor for objects of class Weapon
      */
@@ -18,10 +18,15 @@ public class Weapon extends Item
     {
         super(pDesc, pPower, pDefense);
     }
-    
+
     public void print()
     {
         System.out.print("Weapon: ");
         super.print();
     }
+
+    public boolean isWeapson()
+    {
+        return true;
+    };
 }

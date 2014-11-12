@@ -50,4 +50,9 @@ public class Monster extends Item
         System.out.println();
     }
     
+    public boolean isMonster()
+    {
+        return true;
+    }
+    
 }

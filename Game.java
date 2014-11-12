@@ -254,12 +254,11 @@ public class Game
         else if (commandWord.equals("go")) {
             goRoom(command);
         }
-        else if (commandWord.equals("press")) {
-            currentRoom.press(command);
-            System.out.println(currentRoom.getLongDescription());
-        }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
+        }
+        else if (commandWord.equals("attack")) {
+            attack();
         }
         // else command not recognised.
         return wantToQuit;
@@ -300,6 +299,10 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            if(currentRoom.getRoomContents() != null)
+            {
+                
+            }
             
         }
     }
@@ -355,8 +358,8 @@ public class Game
         g.setExit("south",f);
         //this is where we will establish what is in each room
         //this is just a sample item
-        Item thisItem = new Item("ball",0,0);
-        a.addItem("ball",thisItem);
+        
+        
         //adding the floors to the ArrayList
         floor1.add(a);
         floor1.add(b);

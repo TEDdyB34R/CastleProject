@@ -85,8 +85,7 @@ public class Game
                 System.out.println();
                 System.out.println("You have been slain! Better luck next time...");
                 System.out.println("GAME OVER!!!! MUAHAHAHAHAHAHAH!!!!");
-                return;
-                //we need to add an "end game" methond here or something
+                quitGame();
             }
         }
 
@@ -98,6 +97,10 @@ public class Game
         //maybe add some sort of reward here? i.e.-experience points, bonus stats
     }
 
+    private void quitGame() {
+        System.exit(0);//"end game" methond
+    }
+    
     //this is a method used with potions, elixers, etc.
     private void heal(int healAmount)
     {

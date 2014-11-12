@@ -35,11 +35,7 @@ public class Monster extends Item
     //this is used in the damage calculation method in Game
     public void takeDamage(int pDamage)
     {
-        int damage = pDamage - super.getDefense();
-        if(damage > 0)
-        {
-            health -= damage;
-        }
+        health -= pDamage;
     }
     
     public void print()

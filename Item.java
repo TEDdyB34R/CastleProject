@@ -5,7 +5,7 @@
  * @author Ethan Dowler
  * @version this is to practice with inheritance and make the code better
  */
-public abstract class Item
+public class Item
 {
     // instance variables - replace the example below with your own
     private String desc;

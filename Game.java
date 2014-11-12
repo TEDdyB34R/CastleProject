@@ -56,7 +56,7 @@ public class Game
         while(thisMonster.getHealth() > 0)
         {
             //monster takes damage; see Monster class
-            thisMonster.takeDamage(thisHero.getPower()+currentWeapon.getPower());
+            thisMonster.takeDamage(damageToMonster);
 
             //Hero takes damage
             if(damageToHero > 0)
@@ -116,13 +116,14 @@ public class Game
     }
 
     //this method will be used to randomly spawn a monster in a room
-    private void spawn(String potentialMonster, int rate)
+    private Monster spawn(Monster mon, int rate)
     {
         int x = monsterSpawn.nextInt(rate);
-        if(x == 0)
+        if(x != 0)
         {
-            thisMonster = monsterpedia.get(potentialMonster);
+            mon = null;
         }
+        return mon;
     }
     
     //this method sets 'thisHero' to the hero of the players choice
@@ -299,10 +300,7 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            if(currentRoom.getRoomContents() != null)
-            {
-                
-            }
+            
             
         }
     }
@@ -358,7 +356,7 @@ public class Game
         g.setExit("south",f);
         //this is where we will establish what is in each room
         //this is just a sample item
-        
+        c.setContents(monsterpedia.get("whisp"), null);
         
         //adding the floors to the ArrayList
         floor1.add(a);

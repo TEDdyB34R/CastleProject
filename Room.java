@@ -1,7 +1,5 @@
-import java.util.Set;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Set;
 
 /**
  * Class Room - a room in an adventure game.
@@ -21,7 +19,9 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-    private HashMap<String, Item> getRoomContents;
+    private Monster roomMonster;
+    private Weapon roomWeapon;
+    private Item[] roomContents;
     
     /**
      * Create a room described "description". Initially, it has
@@ -31,9 +31,11 @@ public class Room
      */
    public Room(String description)
     {
+        Monster roomMonster = null;
+        Weapon roomWeapon = null;
         this.description = description;
         exits = new HashMap<String, Room>();
-        getRoomContents = new HashMap<String, Item>();
+        Item[] roomContents = new Item[] {roomMonster, roomWeapon};
     }
 
     /**
@@ -63,7 +65,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are in " + description + ".\n" + getRoomContentsDesc() + getExitString();
+        return "You are in " + description + ".\n" + getContentDesc() + "\n" + getExitString();
     }
 
     /**
@@ -103,25 +105,25 @@ public class Room
     //**********************************************************************************
     //below this line are the methods I have added
     
-    public void addItem(String key, Item newItem)
+    public void setContents(Monster newMonster, Weapon newWeapon)
     {
-        getRoomContents.put(key, newItem);
+        Item[] contents = new Item[] {newMonster, newWeapon};
+        roomContents = contents;
     }
     
-    public String getRoomContentsDesc()
+    public String getContentDesc()
     {
-        String returnString = null;
-        if(getRoomContents != null)
+        String returnString = "";
+        if(roomContents[0] != null)
         {
-            Iterator it = getRoomContents.entrySet().iterator();
-            
-            while(it.hasNext())
-            {
-                Map.Entry entry = (Map.Entry) it.next();
-                returnString += "There is a "+entry.getKey()+" in the room \n";
-            }
+                returnString += "There is a "+roomContents[0].getDesc()+" in the room \n";
+        }
+        if(roomContents[1] != null)
+        {
+            returnString += "There is a "+roomContents[1].getDesc()+" in the room \n";
         }
         return returnString;
     }
+    
 }
 

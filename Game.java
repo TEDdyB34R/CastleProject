@@ -190,8 +190,26 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("switchblade", 4, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("oak shield", 0, 4);
+        thisWeapon = new Weapon("Gold shield", 0, 10);
         armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Small Sword", 50, 0);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Gold Sword", 10, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Axe", 6, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Gun", 12, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Bow and Aarow", 6, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Mini bomb", 10, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Helmet", 0, 5);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Body Armor", 0, 10);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        
+        
     }
     
     private void createMonsterpedia()

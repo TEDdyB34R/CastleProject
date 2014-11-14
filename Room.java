@@ -126,17 +126,26 @@ public class Room
         return returnString;
     }
 
-    /*public boolean checkForMonster()
+    public boolean hasMonster()
     {
-       if(roomContents != null)
+        if(roomContents.isEmpty())
         {
-            if(roomContents.values().)
+            return false;
+        } 
+        
+        
+        for(Item i : roomContents.values())
+        {
+            if(i.isMonster())
             {
                 return true;
             }
         }
+
         return false;
     }
-    */
+    
 }
+
+
 

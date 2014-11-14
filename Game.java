@@ -307,18 +307,19 @@ public class Game
      */
     private void goRoom(Command command) 
     {
-        /*
-        if(currentRoom.checkForMonster() == true)
-        {
-            System.out.println("You cannot leave; a monster is blocking the door!");
-            return;
-        }
+        
+
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
-        */
+        
+        if(currentRoom.hasMonster())
+        {
+            System.out.println("You cannot leave; a monster is blocking the door!");
+            return;
+        }
 
         String direction = command.getSecondWord();
 

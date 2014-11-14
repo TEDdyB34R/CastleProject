@@ -28,7 +28,15 @@ public class Game
     private Parser parser;
     
     private ArrayList<Room> floor1;
-
+    private ArrayList<Room> floor2;
+    private ArrayList<Room> floor3;
+    
+    //creating rooms on first floor.  Start at u1
+    Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
+    //rooms on floor 2
+    Room d2, e2, i2, j2, l2, m2, n2, q2, r2, w2, x2;
+    //rooms on floor 3
+    Room a3, f3, g3, h3, i3, l3, q3, r3, s3, x3;
     
     public Game()
     {
@@ -42,7 +50,8 @@ public class Game
         monsterSpawn = new Random();
         
         createRooms();
-        currentRoom = floor1.get(0);
+        createExits();
+        currentRoom = u1;
         parser = new Parser();
     }
 
@@ -145,8 +154,8 @@ public class Game
             case "tank":
             thisHero = new Hero("Tank",120, 3, 15);
             break;
-            case "ducky":
-            thisHero = new Hero("Ducky, the destroyer of worlds",300, 100, 50);
+            case "nikhil":
+            thisHero = new Hero("Nikhil, destroyer of worlds",300, 100, 50);
             break;
             default:
             thisHero = new Hero("Peasant",50, 0, 0);
@@ -317,10 +326,7 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            if(currentRoom.getRoomContents() != null)
-            {
-                
-            }
+            
             
         }
     }
@@ -342,49 +348,193 @@ public class Game
     }
     
     /**
-     * Create all the rooms and link their exits together.
+     * Create all the rooms.
      */
     private void createRooms()
     {
         createFloor1();
+        createFloor2();
+        createFloor3();
     }
     
     private void createFloor1()
     {
         floor1 = new ArrayList<Room>();
-        //creating rooms
-        Room a, b, c, d, e, f, g;
-        a = new Room("room #1");
-        b = new Room("room #2");
-        c = new Room("room #3");
-        d = new Room("room #4");
-        e = new Room("room #5");
-        f = new Room("room #6");
-        g = new Room("room #7");
-        //setting exits
-        a.setExit("north", b);
-        b.setExit("north", c);
-        b.setExit("south", a);
-        c.setExit("north", d);
-        c.setExit("south", b);
-        c.setExit("east", e);
-        d.setExit("south", c);
-        e.setExit("east", f);
-        e.setExit("west", d);
-        f.setExit("north", g);
-        f.setExit("west", e);
-        g.setExit("south",f);
-        //this is where we will establish what is in each room
-        //this is just a sample item
-        
-        
+        //floor one rooms
+        b1 = new Room("room #1");
+        c1 = new Room("room #2");
+        e1 = new Room("Secret Staircase");
+        g1 = new Room("room #4");
+        h1 = new Room("room #5");
+        i1 = new Room("room #6");
+        j1 = new Room("room #7");
+        k1 = new Room("room #1");
+        l1 = new Room("room #2");
+        n1 = new Room("Stairs/Boss");
+        p1 = new Room("room #4");
+        q1 = new Room("room #5");
+        r1 = new Room("room #6");
+        s1 = new Room("room #7");
+        t1 = new Room("room #6");
+        u1 = new Room("Castle entrance");
         //adding the floors to the ArrayList
-        floor1.add(a);
-        floor1.add(b);
-        floor1.add(c);
-        floor1.add(d);
-        floor1.add(e);
-        floor1.add(f);
-        floor1.add(g);
+        floor1.add(b1);
+        floor1.add(c1);
+        floor1.add(e1);
+        floor1.add(g1);
+        floor1.add(h1);
+        floor1.add(i1);
+        floor1.add(j1);
+        floor1.add(k1);
+        floor1.add(l1);
+        floor1.add(n1);
+        floor1.add(p1);
+        floor1.add(q1);
+        floor1.add(r1);
+        floor1.add(s1);
+        floor1.add(t1);
+        floor1.add(u1);
+    }
+    
+    private void createFloor2() {
+        floor2 = new ArrayList<Room>();
+        //create rooms
+        d2 = new Room("room #1");
+        e2 = new Room("room #2");
+        i2 = new Room("room");
+        j2 = new Room("room #4");
+        l2 = new Room("room #5");
+        m2 = new Room("room #6");
+        n2 = new Room("room #7");
+        q2 = new Room("room #1");
+        r2 = new Room("room #2");
+        w2 = new Room("room");
+        x2 = new Room("Stairs/Boss");
+        
+        floor1.add(d2);
+        floor1.add(e2);
+        floor1.add(i2);
+        floor1.add(j2);
+        floor1.add(l2);
+        floor1.add(m2);
+        floor1.add(n2);
+        floor1.add(q2);
+        floor1.add(r2);
+        floor1.add(w2);
+        floor1.add(x2);
+    }
+    
+    private void createFloor3() {
+        a3 = new Room("Princess");
+        f3 = new Room("main boss");
+        g3 = new Room("room");
+        l3 = new Room("room #4");
+        q3 = new Room("room #5");
+        h3 = new Room("room #6");
+        r3 = new Room("room #7");
+        i3 = new Room("hole, fall");
+        s3 = new Room("room #2");
+        x3 = new Room("Stairs");
+        
+        floor1.add(a3);
+        floor1.add(f3);
+        floor1.add(g3);
+        floor1.add(l3);
+        floor1.add(q3);
+        floor1.add(h3);
+        floor1.add(r3);
+        floor1.add(i3);
+        floor1.add(s3);
+        floor1.add(x3);
+    }
+    
+    private void secretStair() {
+        e1.setExit("up", e2);
+        e2.setExit("down", e1);
+    }
+    
+    private void createExits() {
+        //floor 1 exits
+        u1.setExit("north", p1);
+        p1.setExit("north", k1);
+        p1.setExit("east", q1);
+        p1.setExit("south", u1);
+        k1.setExit("east", l1);
+        k1.setExit("south", p1);
+        q1.setExit("north", l1);
+        q1.setExit("east", r1);
+        q1.setExit("west", p1);
+        l1.setExit("north", g1);
+        l1.setExit("south", q1);
+        l1.setExit("west", k1);
+        g1.setExit("north", b1);
+        g1.setExit("east", h1);
+        g1.setExit("south", l1);
+        b1.setExit("east", c1);
+        b1.setExit("south", g1);
+        r1.setExit("east", s1);
+        r1.setExit("west", q1);
+        h1.setExit("east", i1);
+        h1.setExit("north",c1);
+        h1.setExit("west", g1);
+        c1.setExit("south", h1);
+        c1.setExit("west", b1);
+        s1.setExit("east", t1);
+        s1.setExit("north",n1);
+        s1.setExit("west", r1);
+        n1.setExit("south", s1);
+        n1.setExit("north", i1);
+        n1.setExit("up", n2);
+        i1.setExit("west", h1);
+        i1.setExit("south", n1);
+        i1.setExit("east", j1);
+        t1.setExit("west", s1);
+        j1.setExit("west", i1);
+        e1.setExit("south", j1);
+        
+        //floor 2 exits
+        q2.setExit("north", l2);
+        q2.setExit("east", r2);
+        l2.setExit("south", q2);
+        l2.setExit("east", m2);
+        w2.setExit("north", r2);
+        w2.setExit("east", x2);
+        r2.setExit("north", m2);
+        r2.setExit("west", q2);
+        m2.setExit("south", r2);
+        m2.setExit("east", n2);
+        m2.setExit("west", l2);
+        x2.setExit("west", w2);
+        x2.setExit("up", x3);
+        n2.setExit("west", m2);
+        n2.setExit("down", n1);
+        n2.setExit("north", i2);
+        i2.setExit("north", d2);
+        i2.setExit("south", n2);
+        i2.setExit("east", j2);
+        d2.setExit("south", i2);
+        d2.setExit("east", e2);
+        j2.setExit("west", i2);
+        j2.setExit("north", e2);
+        e2.setExit("west", d2);
+        e2.setExit("south", j2);
+        
+        //floor 3 exits
+        a3.setExit("south", f3);
+        f3.setExit("east", g3);
+        f3.setExit("north", a3);
+        g3.setExit("east", h3);
+        g3.setExit("south", l3);
+        g3.setExit("west", f3);
+        l3.setExit("south", q3);
+        l3.setExit("north", g3);
+        q3.setExit("east", r3);
+        q3.setExit("north", l3);
+        r3.setExit("east", s3);
+        r3.setExit("west", q3);
+        s3.setExit("south", x3);
+        s3.setExit("west", r3);
+        x3.setExit("north", s3);
+        x3.setExit("down", x2);
     }
 }

@@ -246,7 +246,7 @@ public class Game
      * rouge              90             13             8
      * knight             100            10             10
      * paladin            110            7              12
-     * tank               120            3              15
+     * bulwark            120            3              15
      */
     public void play(String heroType) 
     {            
@@ -340,6 +340,14 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
+            if(command.getSecondWord() == "up")
+            {
+                System.out.println("You have climbed up the ladder to the next floor");
+            }
+            if(command.getSecondWord() == "down")
+            {
+                System.out.println("You have climbed down the ladder to the lower floor");
+            }
             System.out.println(currentRoom.getLongDescription());
         }
     }

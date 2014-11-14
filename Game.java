@@ -216,7 +216,7 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         
         //defensive weapons
-        thisWeapon = new Weapon("small shield", 0, 4);
+        thisWeapon = new Weapon("Small Shield", 0, 4);
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Helmet", 0, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);

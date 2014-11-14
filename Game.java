@@ -149,7 +149,7 @@ public class Game
             case "paladin":
             thisHero = new Hero("Paladin", 110, 7, 12);
             break;
-            case "tank":
+            case "bulwark":
             thisHero = new Hero("Tank",120, 3, 15);
             break;
             case "nikhil":
@@ -163,9 +163,15 @@ public class Game
     //Welcome message..
     private void printWelcome()
     {
+        System.out.println("Welcome to the World of ___!");
+        System.out.println("There are many things to discover");
+        System.out.println("         and many adventures to be had");
+        System.out.println("May you find great glory in the destiny that awaits you");
+        System.out.println();
         if(thisHero.getDesc().equals("Peasant"))
         {
-            System.out.println("You must be an illiterate peasant who can't read the README file");
+            System.out.println("You must be an illiterate peasant who can't read");
+            thisHero.print();
             System.out.println("This Hero is very weak. :(");
             System.out.println("You may want to restart your game and choose a stronger Hero class;");
             System.out.println("unless you want to die a quick painful death...");
@@ -174,9 +180,12 @@ public class Game
         }
         else
         {
-            System.out.println("You are a mighty "+thisHero.getDesc()+"!");
             System.out.println("Armed with only your "+currentWeapon.getDesc());
-            System.out.println("Your goal is to rescue the princess at the top of the castle");
+            System.out.println("Your goal is to rescue the princess");
+            System.out.println("               at the top of the castle");
+            System.out.println("Your base stats are: ");
+            thisHero.print();
+            
         }
         System.out.println("");
         System.out.println("You have just enterd the Dark Castle, and you begin to look around");
@@ -184,36 +193,36 @@ public class Game
     }
     
     //this method will create a list of weapons/shields we can pull from
-    // o# = realative strength of offensive itme; d# = relative strength of defensive item
-    // s# = special item that has unique stats/qualities
-    // this will help us keep track of the order of weapon power
     private void createArmory() 
     {
+        //default weapon
         thisWeapon = new Weapon("fists", 0, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
+        
+        //offensive weapons
         thisWeapon = new Weapon("dull knife", 2, 0);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("weak shield", 0, 2);
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("switchblade", 4, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("small sword", 6, 0);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("axe", 6, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("recurve bow", 8, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Crossbow", 10, 5);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Gold Sword", 12, 6);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        
+        //defensive weapons
+        thisWeapon = new Weapon("small shield", 0, 4);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Helmet", 0, 6);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
+        thisWeapon = new Weapon("Body Armor", 0, 8);
+        armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Gold shield", 0, 10);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Small Sword", 50, 0);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Gold Sword", 10, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Axe", 6, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Gun", 12, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Bow and Aarow", 6, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Mini bomb", 10, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Helmet", 0, 5);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Body Armor", 0, 10);
         armory.put(thisWeapon.getDesc(),thisWeapon);
         
         

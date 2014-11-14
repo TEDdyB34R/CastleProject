@@ -12,10 +12,10 @@ AUTHORS:
 USER INSTRUCTIONS:
 
 
-Available starter classes: *<subject to change!>*
+Available starter classes:
 className   baseHealth  basePower   baseDefense
-knight      100         10          10
-rouge       90          13          8
-paladin     110         7           12
 assassin    80          15          7
-tank        120         3           15
+rouge       90          13          8
+knight      100         10          10
+paladin     110         7           12
+bulwark     120         3           15

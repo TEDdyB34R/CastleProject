@@ -1,6 +1,5 @@
 import java.util.Random;
 import java.util.HashMap;
-import java.util.ArrayList;
 /**
  * This is where you play the Game!
  * 
@@ -18,18 +17,13 @@ public class Game
     private int currentHealth;
     private Weapon currentWeapon;
     private Room currentRoom;
-    private ArrayList<Room> currentFloor;
-
+    private HashMap<String, Weapon> inventory;
 
     private Random monsterSpawn;
     private HashMap<String, Weapon> armory;
     private HashMap<String, Monster> monsterpedia;
     
     private Parser parser;
-    
-    private ArrayList<Room> floor1;
-    private ArrayList<Room> floor2;
-    private ArrayList<Room> floor3;
     
     //creating rooms on first floor.  Start at u1
     Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
@@ -43,6 +37,9 @@ public class Game
         //creates an armory HashMap full of weapons
         armory = new HashMap<String, Weapon>();
         createArmory();
+        
+        inventory = new HashMap<String, Weapon>();
+        inventory.put(armory.get("fists").getDesc(), armory.get("fists"));
         
         //creates our monsters in a HashMap
         monsterpedia = new HashMap<String, Monster>();
@@ -131,6 +128,7 @@ public class Game
         if(x == 0)
         {
             thisMonster = monsterpedia.get(potentialMonster);
+            currentRoom.addItem(thisMonster.getDesc(), thisMonster);
         }
     }
     
@@ -309,11 +307,18 @@ public class Game
      */
     private void goRoom(Command command) 
     {
+        /*
+        if(currentRoom.checkForMonster() == true)
+        {
+            System.out.println("You cannot leave; a monster is blocking the door!");
+            return;
+        }
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
+        */
 
         String direction = command.getSecondWord();
 
@@ -326,8 +331,6 @@ public class Game
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
-            
-            
         }
     }
 
@@ -359,7 +362,6 @@ public class Game
     
     private void createFloor1()
     {
-        floor1 = new ArrayList<Room>();
         //floor one rooms
         b1 = new Room("room #1");
         c1 = new Room("room #2");
@@ -377,27 +379,9 @@ public class Game
         s1 = new Room("room #7");
         t1 = new Room("room #6");
         u1 = new Room("Castle entrance");
-        //adding the floors to the ArrayList
-        floor1.add(b1);
-        floor1.add(c1);
-        floor1.add(e1);
-        floor1.add(g1);
-        floor1.add(h1);
-        floor1.add(i1);
-        floor1.add(j1);
-        floor1.add(k1);
-        floor1.add(l1);
-        floor1.add(n1);
-        floor1.add(p1);
-        floor1.add(q1);
-        floor1.add(r1);
-        floor1.add(s1);
-        floor1.add(t1);
-        floor1.add(u1);
     }
     
     private void createFloor2() {
-        floor2 = new ArrayList<Room>();
         //create rooms
         d2 = new Room("room #1");
         e2 = new Room("room #2");
@@ -410,18 +394,6 @@ public class Game
         r2 = new Room("room #2");
         w2 = new Room("room");
         x2 = new Room("Stairs/Boss");
-        
-        floor1.add(d2);
-        floor1.add(e2);
-        floor1.add(i2);
-        floor1.add(j2);
-        floor1.add(l2);
-        floor1.add(m2);
-        floor1.add(n2);
-        floor1.add(q2);
-        floor1.add(r2);
-        floor1.add(w2);
-        floor1.add(x2);
     }
     
     private void createFloor3() {
@@ -435,17 +407,6 @@ public class Game
         i3 = new Room("hole, fall");
         s3 = new Room("room #2");
         x3 = new Room("Stairs");
-        
-        floor1.add(a3);
-        floor1.add(f3);
-        floor1.add(g3);
-        floor1.add(l3);
-        floor1.add(q3);
-        floor1.add(h3);
-        floor1.add(r3);
-        floor1.add(i3);
-        floor1.add(s3);
-        floor1.add(x3);
     }
     
     private void secretStair() {
@@ -501,6 +462,7 @@ public class Game
         w2.setExit("east", x2);
         r2.setExit("north", m2);
         r2.setExit("west", q2);
+        r2.setExit("south", w2);
         m2.setExit("south", r2);
         m2.setExit("east", n2);
         m2.setExit("west", l2);
@@ -526,6 +488,7 @@ public class Game
         g3.setExit("east", h3);
         g3.setExit("south", l3);
         g3.setExit("west", f3);
+        h3.setExit("west", g3);
         l3.setExit("south", q3);
         l3.setExit("north", g3);
         q3.setExit("east", r3);

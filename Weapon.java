@@ -29,5 +29,5 @@ public class Weapon extends Item
     public boolean isWeapson()
     {
         return true;
-    };
+    }
 }

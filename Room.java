@@ -21,19 +21,19 @@ public class Room
 {
     private String description;
     private HashMap<String, Room> exits;        // stores exits of this room.
-    private HashMap<String, Item> getRoomContents;
-    
+    private HashMap<String, Item> roomContents;
+
     /**
      * Create a room described "description". Initially, it has
      * no exits. "description" is something like "a kitchen" or
      * "an open court yard".
      * @param description The room's description.
      */
-   public Room(String description)
+    public Room(String description)
     {
         this.description = description;
         exits = new HashMap<String, Room>();
-        getRoomContents = new HashMap<String, Item>();
+        roomContents = new HashMap<String, Item>();
     }
 
     /**
@@ -45,7 +45,7 @@ public class Room
     {
         exits.put(direction, neighbor);
     }
-    
+
     /**
      * @return The short description of the room
      * (the one that was defined in the constructor).
@@ -91,30 +91,32 @@ public class Room
     {
         return exits.get(direction);
     }
+
     public void press(Command command)
     {
         System.out.println("Do What?");
     }
+
     public void changeDescription(String newDescription)
     {
         description = newDescription;
     }
-    
+
     //**********************************************************************************
     //below this line are the methods I have added
-    
+
     public void addItem(String key, Item newItem)
     {
-        getRoomContents.put(key, newItem);
+        roomContents.put(key, newItem);
     }
-    
+
     public String getRoomContentsDesc()
     {
-        String returnString = null;
-        if(getRoomContents != null)
+        String returnString = "";
+        if(roomContents != null)
         {
-            Iterator it = getRoomContents.entrySet().iterator();
-            
+            Iterator it = roomContents.entrySet().iterator();
+
             while(it.hasNext())
             {
                 Map.Entry entry = (Map.Entry) it.next();
@@ -123,5 +125,18 @@ public class Room
         }
         return returnString;
     }
+
+    /*public boolean checkForMonster()
+    {
+       if(roomContents != null)
+        {
+            if(roomContents.values().)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    */
 }
 

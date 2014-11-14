@@ -24,6 +24,7 @@ public class Game
     private HashMap<String, Monster> monsterpedia;
     
     private Parser parser;
+        private ParserWithFileInput parserWithFileInput;
     
     //creating rooms on first floor.  Start at u1
     Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
@@ -50,8 +51,27 @@ public class Game
         createExits();
         currentRoom = u1;
         parser = new Parser();
+                parserWithFileInput = new ParserWithFileInput();
     }
+    //****************************************
+     public void playWithFileInput() 
+    {            
+        chooseHero("knight");
+        currentHealth = thisHero.getMaxHealth();
+        currentWeapon = armory.get("fists");
 
+        printWelcome();
+        // Enter the main command loop.  Here we repeatedly read commands and
+        // execute them until the game is over.
+                
+        boolean finished = false;
+        while (! finished) {
+            Command command = parserWithFileInput.getCommand();
+            finished = processCommand(command);
+        }
+        System.out.println("Thank you for playing.  Good bye.");
+    }
+    //*****************************************
     private void attack()
     {
         //damage calculations

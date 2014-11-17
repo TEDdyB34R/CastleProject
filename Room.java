@@ -63,7 +63,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return description + ".\n" + getRoomContentsDesc() + getExitString();
+        return "You are in " + description + ".\n" + getRoomContentsDesc() + getExitString();
     }
 
     /**
@@ -92,7 +92,7 @@ public class Room
         return exits.get(direction);
     }
 
-    public void press(Command command)
+    public void pull(Command command)
     {
         System.out.println("Do What?");
     }

@@ -170,7 +170,7 @@ public class Game
             thisHero = new Hero("Paladin", 110, 7, 12);
             break;
             case "bulwark":
-            thisHero = new Hero("Tank",120, 3, 15);
+            thisHero = new Hero("Bulwark",120, 3, 15);
             break;
             case "nikhil":
             thisHero = new Hero("Nikhil, destroyer of worlds",300, 100, 50);
@@ -401,21 +401,21 @@ public class Game
     private void createFloor1()
     {
         //floor one rooms
-        b1 = new Room("room #1");
-        c1 = new Room("room #2");
-        e1 = new Room("Secret Staircase");
-        g1 = new Room("room #4");
-        h1 = new Room("room #5");
-        i1 = new Room("room #6");
+        b1 = new Room("a room with several bookshelves \n if only you had time to read...");
+        c1 = new Room("a room with...what's that smell? Eww!");
+        e1 = new SpecialRoom("a plain room with no distinctive features");
+        g1 = new Room("the northwestern hallway");
+        h1 = new Room("the northern hallway");
+        i1 = new Room("the northeastern hallway");
         j1 = new Room("room #7");
-        k1 = new Room("room #1");
-        l1 = new Room("room #2");
-        n1 = new Room("Stairs/Boss");
-        p1 = new Room("room #4");
-        q1 = new Room("room #5");
-        r1 = new Room("room #6");
-        s1 = new Room("room #7");
-        t1 = new Room("room #6");
+        k1 = new Room("a room with a gargoyle");
+        l1 = new Room("a small corridor");
+        n1 = new Room("a large open room with blood on every wall \n there is a spiral staircase that leads up");
+        p1 = new Room("a room with a chandalier");
+        q1 = new Room("the southwestern hallway");
+        r1 = new Room("the southern hallway");
+        s1 = new Room("the southeastern hallway \n you see a menacing door to the north");
+        t1 = new Room("a room with a window \n you can see the dreary weather outside");
         u1 = new Room("Castle entrance");
     }
     
@@ -427,7 +427,7 @@ public class Game
         j2 = new Room("room #4");
         l2 = new Room("room #5");
         m2 = new Room("room #6");
-        n2 = new Room("room #7");
+        n2 = new Room("a room with a staircase leading down");
         q2 = new Room("room #1");
         r2 = new Room("room #2");
         w2 = new Room("room");

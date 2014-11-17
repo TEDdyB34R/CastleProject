@@ -19,12 +19,12 @@ public class Game
     private Room currentRoom;
     private HashMap<String, Weapon> inventory;
 
-    private Random monsterSpawn;
+    private Random rand;
     private HashMap<String, Weapon> armory;
     private HashMap<String, Monster> monsterpedia;
     
     private Parser parser;
-        private ParserWithFileInput parserWithFileInput;
+    private ParserWithFileInput parserWithFileInput;
     
     //creating rooms on first floor.  Start at u1
     Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
@@ -45,7 +45,7 @@ public class Game
         //creates our monsters in a HashMap
         monsterpedia = new HashMap<String, Monster>();
         createMonsterpedia();
-        monsterSpawn = new Random();
+        rand = new Random();
         
         createRooms();
         createExits();
@@ -62,8 +62,7 @@ public class Game
 
         printWelcome();
         // Enter the main command loop.  Here we repeatedly read commands and
-        // execute them until the game is over.
-                
+        // execute them until the game is over.     
         boolean finished = false;
         while (! finished) {
             Command command = parserWithFileInput.getCommand();
@@ -74,6 +73,8 @@ public class Game
     //*****************************************
     private void attack()
     {
+        System.out.println("You valiantly attack the monster!");
+        
         //damage calculations
         int damageToHero = thisMonster.getPower() - thisHero.getDefense() - currentWeapon.getDefense();
         int damageToMonster = thisHero.getPower() + currentWeapon.getPower() - thisMonster.getDefense();
@@ -84,25 +85,26 @@ public class Game
             //monster takes damage; see Monster class
             thisMonster.takeDamage(thisHero.getPower()+currentWeapon.getPower());
 
+            
+             //Battle results; prints the damage Hero deals
+            if(damageToMonster > 0)
+            {
+                System.out.println("you deal "+damageToMonster+" damage");
+            }
+            else
+            {
+                System.out.println("you deal 0 damage");
+            }
+            
             //Hero takes damage
             if(damageToHero > 0)
             {
                 currentHealth -= damageToHero;
-                System.out.println("you take "+damageToHero+" damage");
+                System.out.println("     and take "+damageToHero+" damage");
             }
             else
             {
-                System.out.println("you take 0 damage");
-            }
-
-            //Battle results; prints the damage Hero deals
-            if(damageToMonster > 0)
-            {
-                System.out.println("and deal "+damageToMonster+" damage");
-            }
-            else
-            {
-                System.out.println("and deal 0 damage");
+                System.out.println("     and take 0 damage");
             }
 
             //if your health drops below zero, you lose
@@ -116,6 +118,9 @@ public class Game
             }
         }
 
+        //monster is removed from the room
+        currentRoom.removeItem(thisMonster.getDesc());
+        
         //victory condition
         System.out.println("The monster has been slain!");
         System.out.println("your Hp = "+currentHealth);
@@ -144,7 +149,7 @@ public class Game
     //this method will be used to randomly spawn a monster in a room
     private void spawn(String potentialMonster, int rate)
     {
-        int x = monsterSpawn.nextInt(rate);
+        int x = rand.nextInt(rate);
         if(x == 0)
         {
             thisMonster = monsterpedia.get(potentialMonster);
@@ -252,7 +257,7 @@ public class Game
     {
         thisMonster = new Monster("whisp", 50, 0, 0, 4);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 50, 3, 5, 4);
+        thisMonster = new Monster("giant roach", 50, 10, 10, 4);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
     
@@ -314,6 +319,18 @@ public class Game
         else if (commandWord.equals("attack")) {
             attack();
         }
+        else if (commandWord.equals("pull")) {
+            
+        }
+        else if (commandWord.equals("use")) {
+            
+        }
+        else if (commandWord.equals("pickup")) {
+            
+        }
+        else if (commandWord.equals("run")) {
+            
+        }
         // else command not recognised.
         return wantToQuit;
     }
@@ -360,15 +377,20 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
+            spawn("whisp", 4); //we need to fix this somehow
             if(command.getSecondWord() == "up")
             {
-                System.out.println("You have climbed up the ladder to the next floor");
+                System.out.println("You have walked up the stairs to the next floor");
             }
             if(command.getSecondWord() == "down")
             {
-                System.out.println("You have climbed down the ladder to the lower floor");
+                System.out.println("You have walked down the stairs to the lower floor");
             }
             System.out.println(currentRoom.getLongDescription());
+            if(currentRoom.hasMonster())
+            {
+                thisMonster.print();
+            }
         }
     }
 
@@ -432,7 +454,7 @@ public class Game
         q2 = new Room("a room painted red");
         r2 = new Room("a room painted yellow");
         w2 = new Room("a room painted black \n you see a menacing door to the east");
-        x2 = new BossRoom("a circular room with much debris and rubble \n you can see a ladder leading up");
+        x2 = new BossRoom("a circular room with much debris and rubble \n you can see a spiral staircase leading up");
     }
     
     private void createFloor3() {
@@ -445,7 +467,7 @@ public class Game
         q3 = new Room("a room of curious emptiness");
         r3 = new Room("a room that's curiously empty");
         s3 = new Room("a curiously empty room");
-        x3 = new Room("a room with a ladder leading down");
+        x3 = new Room("a room with a staircase leading down");
     }
     
     private void secretStair() {
@@ -530,6 +552,8 @@ public class Game
         g3.setExit("south", l3);
         g3.setExit("west", f3);
         h3.setExit("west", g3);
+        h3.setExit("east", i3);
+        i3.setExit("west", h3);
         l3.setExit("south", q3);
         l3.setExit("north", g3);
         q3.setExit("east", r3);
@@ -540,5 +564,10 @@ public class Game
         s3.setExit("west", r3);
         x3.setExit("north", s3);
         x3.setExit("down", x2);
+    }
+    
+    private void fillRooms()
+    {
+        //room.addItem();
     }
 }

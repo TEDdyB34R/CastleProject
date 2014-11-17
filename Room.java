@@ -63,7 +63,7 @@ public class Room
      */
     public String getLongDescription()
     {
-        return "You are in " + description + ".\n" + getRoomContentsDesc() + getExitString();
+        return "You are in " + description + ".\n" + getExitString() +"\n"+ getRoomContentsDesc();
     }
 
     /**
@@ -108,6 +108,11 @@ public class Room
     public void addItem(String key, Item newItem)
     {
         roomContents.put(key, newItem);
+    }
+    
+    public void removeItem(String key)
+    {
+        roomContents.remove(key);
     }
 
     public String getRoomContentsDesc()

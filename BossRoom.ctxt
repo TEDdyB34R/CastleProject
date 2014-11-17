@@ -2,4 +2,8 @@
 comment0.params=pDesc
 comment0.target=BossRoom(java.lang.String)
 comment0.text=\n\ Constructor\ for\ objects\ of\ class\ BossRoom\n
-numComments=1
+comment1.params=
+comment1.target=boolean\ isLocked()
+comment2.params=
+comment2.target=void\ unlock()
+numComments=3

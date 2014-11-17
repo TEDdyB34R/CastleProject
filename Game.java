@@ -317,7 +317,10 @@ public class Game
             wantToQuit = quit(command);
         }
         else if (commandWord.equals("attack")) {
-            attack();
+            if(currentRoom.hasMonster())
+            {
+                attack();
+            }
         }
         else if (commandWord.equals("pull")) {
             

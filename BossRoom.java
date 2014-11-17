@@ -7,14 +7,24 @@
  */
 public class BossRoom extends Room
 {
-
+    public boolean locked;
+    
     /**
      * Constructor for objects of class BossRoom
      */
     public BossRoom(String pDesc)
     {
         super(pDesc);
+        locked = true;
     }
 
+    public boolean isLocked()
+    {
+        return locked;
+    }
     
+    public void unlock()
+    {
+        locked = false;
+    }
 }

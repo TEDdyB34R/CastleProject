@@ -150,6 +150,15 @@ public class Room
         return false;
     }
     
+    public boolean isLocked()
+    {
+        return false;
+    }
+    
+    public void unlock()
+    {
+        
+    }
 }
 
 

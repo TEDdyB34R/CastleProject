@@ -29,7 +29,7 @@ public class Game
     //creating rooms on first floor.  Start at u1
     Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
     //rooms on floor 2
-    Room d2, e2, i2, j2, l2, m2, n2, q2, r2, w2, x2;
+    Room d2, e2, i2, j2, k2, l2, m2, n2, q2, r2, w2, x2;
     //rooms on floor 3
     Room a3, f3, g3, h3, i3, l3, q3, r3, s3, x3;
     
@@ -403,53 +403,56 @@ public class Game
         //floor one rooms
         b1 = new Room("a room with several bookshelves \n if only you had time to read...");
         c1 = new Room("a room with...what's that smell? Eww!");
-        e1 = new SpecialRoom("a plain room with no distinctive features");
+        e1 = new LeverRoom("a plain room with no distinctive features");
         g1 = new Room("the northwestern hallway");
         h1 = new Room("the northern hallway");
-        i1 = new Room("the northeastern hallway");
-        j1 = new Room("room #7");
+        i1 = new Room("the northeastern hallway \n you see a menacing door to the south");
+        j1 = new Room("a room with a window \n you can see dead plants outside");
         k1 = new Room("a room with a gargoyle");
         l1 = new Room("a small corridor");
-        n1 = new Room("a large open room with blood on every wall \n there is a spiral staircase that leads up");
+        n1 = new BossRoom("a large open room with blood on every wall \n there is a spiral staircase that leads up");
         p1 = new Room("a room with a chandalier");
         q1 = new Room("the southwestern hallway");
         r1 = new Room("the southern hallway");
         s1 = new Room("the southeastern hallway \n you see a menacing door to the north");
         t1 = new Room("a room with a window \n you can see the dreary weather outside");
-        u1 = new Room("Castle entrance");
+        u1 = new Room("the Castle foyer");
     }
     
     private void createFloor2() {
         //create rooms
-        d2 = new Room("room #1");
-        e2 = new Room("room #2");
-        i2 = new Room("room");
-        j2 = new Room("room #4");
-        l2 = new Room("room #5");
-        m2 = new Room("room #6");
+        d2 = new Room("a room painted brown");
+        e2 = new Room("a simple, plain room that doesn't seem to have any unique qualities");
+        i2 = new Room("a skinny corridor");
+        j2 = new Room("a room painted purple");
+        k2 = new Room("a room with a large wooden cabinet /n there are many things inside");
+        l2 = new Room("a room painted green");
+        m2 = new Room("a room painted blue");
         n2 = new Room("a room with a staircase leading down");
-        q2 = new Room("room #1");
-        r2 = new Room("room #2");
-        w2 = new Room("room");
-        x2 = new Room("Stairs/Boss");
+        q2 = new Room("a room painted red");
+        r2 = new Room("a room painted yellow");
+        w2 = new Room("a room painted black \n you see a menacing door to the east");
+        x2 = new BossRoom("a circular room with much debris and rubble \n you can see a ladder leading up");
     }
     
     private void createFloor3() {
-        a3 = new Room("Princess");
-        f3 = new Room("main boss");
-        g3 = new Room("room");
-        l3 = new Room("room #4");
-        q3 = new Room("room #5");
-        h3 = new Room("room #6");
-        r3 = new Room("room #7");
-        i3 = new Room("hole, fall");
-        s3 = new Room("room #2");
-        x3 = new Room("Stairs");
+        a3 = new Room("a room with piles of gold and \n a beautiful princess inside");
+        f3 = new BossRoom("a room full of dead animals and rotting corpses");
+        g3 = new Room("an empty room that inspires curiosity \n you see a menacing door to the west");
+        h3 = new Room("a curious room full emptiness");
+        i3 = new LeverRoom("hole, fall");
+        l3 = new Room("an empty corridor");
+        q3 = new Room("a room of curious emptiness");
+        r3 = new Room("a room that's curiously empty");
+        s3 = new Room("a curiously empty room");
+        x3 = new Room("a room with a ladder leading down");
     }
     
     private void secretStair() {
         e1.setExit("up", e2);
+        //e1.changeDesc("");
         e2.setExit("down", e1);
+        //e2.changeDesc("");
     }
     
     private void createExits() {

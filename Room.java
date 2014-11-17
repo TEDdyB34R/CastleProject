@@ -97,7 +97,7 @@ public class Room
         System.out.println("Do What?");
     }
 
-    public void changeDescription(String newDescription)
+    public void changeDesc(String newDescription)
     {
         description = newDescription;
     }

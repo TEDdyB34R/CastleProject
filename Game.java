@@ -413,6 +413,8 @@ public class Game
         }
     }
     
+ 
+    
     /**
      * Create all the rooms.
      */
@@ -465,7 +467,7 @@ public class Game
         f3 = new BossRoom("a room full of dead animals and rotting corpses");
         g3 = new Room("an empty room that inspires curiosity \n you see a menacing door to the west");
         h3 = new Room("a curious room full emptiness");
-        i3 = new LeverRoom("hole, fall");
+        i3 = new Room("hole, fall"); //change
         l3 = new Room("an empty corridor");
         q3 = new Room("a room of curious emptiness");
         r3 = new Room("a room that's curiously empty");

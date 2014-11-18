@@ -18,21 +18,20 @@ public class Game
     private Weapon currentWeapon;
     private Room currentRoom;
     private HashMap<String, Weapon> inventory;
-    private Monster floorMonster;
 
     private Random rand;
-    private HashMap<String, Weapon> armory;
+    public static HashMap<String, Weapon> armory;
     private HashMap<String, Monster> monsterpedia;
 
     private Parser parser;
     private ParserWithFileInput parserWithFileInput;
 
     //creating rooms on first floor.  Start at u1
-    Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
+    static Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
     //rooms on floor 2
-    Room d2, e2, i2, j2, k2, l2, m2, n2, q2, r2, w2, x2;
+    static Room d2, e2, i2, j2, k2, l2, m2, n2, q2, r2, w2, x2;
     //rooms on floor 3
-    Room a3, f3, g3, h3, i3, l3, q3, r3, s3, x3;
+    static Room a3, f3, g3, h3, i3, l3, q3, r3, s3, x3;
 
     public Game()
     {
@@ -456,11 +455,11 @@ public class Game
         //floor one rooms
         b1 = new Room("a room with several bookshelves \n if only you had time to read...");
         c1 = new Room("a room with...what's that smell? Eww!");
-        e1 = new LeverRoom("a plain room with no distinctive features");
+        e1 = new LeverRoom("a plain room with no distinctive features \n except... \n there is a mysterious lever in the corner...");
         g1 = new Room("the northwestern hallway");
         h1 = new Room("the northern hallway");
         i1 = new Room("the northeastern hallway \n you see a menacing door to the south");
-        j1 = new Room("a room with a window \n you can see dead plants outside \n there is a mysterious lever in the corner...");
+        j1 = new Room("a room with a window \n you can see dead plants outside");
         k1 = new Room("a room with a gargoyle");
         l1 = new Room("a small corridor");
         n1 = new BossRoom("a large open room with blood on every wall \n there is a spiral staircase that leads up");
@@ -545,6 +544,7 @@ public class Game
         i1.setExit("east", j1);
         t1.setExit("west", s1);
         j1.setExit("west", i1);
+        j1.setExit("north", e1);
         e1.setExit("south", j1);
 
         //floor 2 exits

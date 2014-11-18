@@ -155,6 +155,11 @@ public class Room
         return false;
     }
     
+    public boolean isNotBossRoom()
+    {
+        return true;
+    }
+    
     public void unlock()
     {
         

@@ -7,7 +7,8 @@
  */
 public class Monster extends Item
 {
-    private int health;
+    private int maxHealth;
+    private int currentHealth;
     private int mSpawnRate;
 
     /**
@@ -16,13 +17,14 @@ public class Monster extends Item
     public Monster(String pDesc, int pHealth, int pPower, int pDefense,  int pSpawnRate)
     {
         super(pDesc, pPower, pDefense);
-        health = pHealth;
+        maxHealth = pHealth;
+        currentHealth = maxHealth;
         mSpawnRate = pSpawnRate;
     }
     
     public int getHealth()
     {
-        return health;
+        return maxHealth;
     }
     
     //this is the likelihood that a monster will appear in a room
@@ -38,7 +40,7 @@ public class Monster extends Item
         int damage = pDamage - super.getDefense();
         if(damage > 0)
         {
-            health -= damage;
+            currentHealth -= damage;
         }
     }
     
@@ -46,13 +48,18 @@ public class Monster extends Item
     {
         System.out.print("Monster: ");
         super.print();
-        System.out.println("Health: "+health);
+        System.out.println("Health: "+currentHealth);
         System.out.println();
     }
     
     public boolean isMonster()
     {
         return true;
+    }
+    
+    public void refreshHealth()
+    {
+        currentHealth = maxHealth;
     }
     
 }

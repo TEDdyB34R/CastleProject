@@ -18,6 +18,7 @@ public class Game
     private Weapon currentWeapon;
     private Room currentRoom;
     private HashMap<String, Weapon> inventory;
+    private Monster floorMonster;
 
     private Random rand;
     private HashMap<String, Weapon> armory;
@@ -45,6 +46,7 @@ public class Game
         //creates our monsters in a HashMap
         monsterpedia = new HashMap<String, Monster>();
         createMonsterpedia();
+        Monster floorMonster = monsterpedia.get("whisp");
         rand = new Random();
         
         createRooms();
@@ -153,6 +155,7 @@ public class Game
         if(x == 0)
         {
             thisMonster = monsterpedia.get(potentialMonster);
+            thisMonster.refreshHealth();
             currentRoom.addItem(thisMonster.getDesc(), thisMonster);
         }
     }
@@ -332,7 +335,13 @@ public class Game
             
         }
         else if (commandWord.equals("run")) {
-            
+            int x = rand.nextInt(8);
+            if(x == 0)
+            {
+                System.out.println("you were able to escape the monster; \n quick, pick an exit!");
+                currentRoom.removeItem(thisMonster.getDesc());
+                currentRoom.getLongDescription();
+            }
         }
         // else command not recognised.
         return wantToQuit;
@@ -380,7 +389,12 @@ public class Game
         }
         else {
             currentRoom = nextRoom;
-            spawn("whisp", 4); //we need to fix this somehow
+            
+            if(currentRoom.isNotBossRoom())
+            {
+                //spawn(floorMonster.getDesc(), floorMonster.getSpawnRate()); //we need to fix this somehow
+            }
+            
             if(command.getSecondWord() == "up")
             {
                 System.out.println("You have walked up the stairs to the next floor");

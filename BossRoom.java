@@ -27,4 +27,9 @@ public class BossRoom extends Room
     {
         locked = false;
     }
+    
+    public boolean isNotBossRoom()
+    {
+        return false;
+    }
 }

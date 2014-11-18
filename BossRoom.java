@@ -28,8 +28,8 @@ public class BossRoom extends Room
         locked = false;
     }
     
-    public boolean isNotBossRoom()
+    public boolean isBossRoom()
     {
-        return false;
+        return true;
     }
 }

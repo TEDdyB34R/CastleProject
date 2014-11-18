@@ -150,14 +150,52 @@ public class Room
         return false;
     }
     
+    public boolean hasWeapon()
+    {
+        if(roomContents.isEmpty())
+        {
+            return false;
+        } 
+        
+        
+        for(Item i : roomContents.values())
+        {
+            if(i.isWeapon())
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    
+    public Weapon getWeapon()
+    {
+        if(roomContents.isEmpty())
+        {
+            return null;
+        } 
+        
+        
+        for(Item i : roomContents.values())
+        {
+            if(i.isWeapon())
+            {
+                return (Weapon) i;
+            }
+        }
+
+        return null;
+    }
+    
     public boolean isLocked()
     {
         return false;
     }
     
-    public boolean isNotBossRoom()
+    public boolean isBossRoom()
     {
-        return true;
+        return false;
     }
     
     public void unlock()

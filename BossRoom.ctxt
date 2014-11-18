@@ -7,5 +7,5 @@ comment1.target=boolean\ isLocked()
 comment2.params=
 comment2.target=void\ unlock()
 comment3.params=
-comment3.target=boolean\ isNotBossRoom()
+comment3.target=boolean\ isBossRoom()
 numComments=4

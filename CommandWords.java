@@ -14,7 +14,7 @@ public class CommandWords
     // a constant array that holds all valid command words
     private static final String[] validCommands = 
     {
-        "go", "quit", "help", "attack", "use", "pickup", "pull", "run"
+        "go", "quit", "help", "attack", "pickup", "pull", "run"
     };
 
     /**
@@ -45,7 +45,7 @@ public class CommandWords
     public void showAll() 
     {
         System.out.println("Movement: go pickup use");
-        System.out.println("Battle: attack use run");
+        System.out.println("Battle: attack run");
         System.out.println("Game: quit help");
         System.out.println();
     }

@@ -23,40 +23,40 @@ public class Game
     private Random rand;
     private HashMap<String, Weapon> armory;
     private HashMap<String, Monster> monsterpedia;
-    
+
     private Parser parser;
     private ParserWithFileInput parserWithFileInput;
-    
+
     //creating rooms on first floor.  Start at u1
     Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
     //rooms on floor 2
     Room d2, e2, i2, j2, k2, l2, m2, n2, q2, r2, w2, x2;
     //rooms on floor 3
     Room a3, f3, g3, h3, i3, l3, q3, r3, s3, x3;
-    
+
     public Game()
     {
         //creates an armory HashMap full of weapons
         armory = new HashMap<String, Weapon>();
         createArmory();
-        
+
         inventory = new HashMap<String, Weapon>();
         inventory.put(armory.get("fists").getDesc(), armory.get("fists"));
-        
+
         //creates our monsters in a HashMap
         monsterpedia = new HashMap<String, Monster>();
         createMonsterpedia();
         Monster floorMonster = monsterpedia.get("whisp");
         rand = new Random();
-        
+
         createRooms();
         createExits();
         currentRoom = u1;
         parser = new Parser();
-                parserWithFileInput = new ParserWithFileInput();
+        parserWithFileInput = new ParserWithFileInput();
     }
     //****************************************
-     public void playWithFileInput() 
+    public void playWithFileInput() 
     {            
         chooseHero("knight");
         currentHealth = thisHero.getMaxHealth();
@@ -76,7 +76,7 @@ public class Game
     private void attack()
     {
         System.out.println("You valiantly attack the monster!");
-        
+
         //damage calculations
         int damageToHero = thisMonster.getPower() - thisHero.getDefense() - currentWeapon.getDefense();
         int damageToMonster = thisHero.getPower() + currentWeapon.getPower() - thisMonster.getDefense();
@@ -87,8 +87,7 @@ public class Game
             //monster takes damage; see Monster class
             thisMonster.takeDamage(thisHero.getPower()+currentWeapon.getPower());
 
-            
-             //Battle results; prints the damage Hero deals
+            //Battle results; prints the damage Hero deals
             if(damageToMonster > 0)
             {
                 System.out.println("you deal "+damageToMonster+" damage");
@@ -97,7 +96,7 @@ public class Game
             {
                 System.out.println("you deal 0 damage");
             }
-            
+
             //Hero takes damage
             if(damageToHero > 0)
             {
@@ -122,7 +121,7 @@ public class Game
 
         //monster is removed from the room
         currentRoom.removeItem(thisMonster.getDesc());
-        
+
         //victory condition
         System.out.println("The monster has been slain!");
         System.out.println("your Hp = "+currentHealth);
@@ -159,7 +158,7 @@ public class Game
             currentRoom.addItem(thisMonster.getDesc(), thisMonster);
         }
     }
-    
+
     //this method sets 'thisHero' to the hero of the players choice
     private void chooseHero(String heroType)
     {
@@ -187,7 +186,7 @@ public class Game
             thisHero = new Hero("Peasant",50, 0, 0);
         }
     }
-    
+
     //Welcome message..
     private void printWelcome()
     {
@@ -213,20 +212,20 @@ public class Game
             System.out.println("               at the top of the castle");
             System.out.println("Your base stats are: ");
             thisHero.print();
-            
+
         }
         System.out.println("");
         System.out.println("You have just enterd the Dark Castle, and you begin to look around");
         System.out.println(currentRoom.getExitString());
     }
-    
+
     //this method will create a list of weapons/shields we can pull from
     private void createArmory() 
     {
         //default weapon
         thisWeapon = new Weapon("fists", 0, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        
+
         //offensive weapons
         thisWeapon = new Weapon("dull knife", 2, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
@@ -242,7 +241,7 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Gold Sword", 12, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        
+
         //defensive weapons
         thisWeapon = new Weapon("Small Shield", 0, 4);
         armory.put(thisWeapon.getDesc(),thisWeapon);
@@ -252,10 +251,8 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Gold shield", 0, 10);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        
-        
+
     }
-    
     private void createMonsterpedia()
     {
         thisMonster = new Monster("whisp", 50, 0, 0, 4);
@@ -263,7 +260,7 @@ public class Game
         thisMonster = new Monster("giant roach", 50, 10, 10, 4);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
-    
+
     //****************************************************************************
     //the methods below this line are from the Zuul game and are under construction
     /**
@@ -284,7 +281,7 @@ public class Game
         currentWeapon = armory.get("fists");
 
         printWelcome();
-        
+
         // Enter the main command loop.  Here we repeatedly read commands and
         // execute them until the game is over.       
         boolean finished = false;
@@ -294,7 +291,7 @@ public class Game
         }
         System.out.println("Thank you for playing.  Good bye.");
     }
-    
+
     /**
      * Given a command, process (that is: execute) the command.
      * @param command The command to be processed.
@@ -324,15 +321,19 @@ public class Game
             {
                 attack();
             }
+            else
+            {
+                System.out.println("attack what? the air?");
+            }
         }
         else if (commandWord.equals("pull")) {
-            
-        }
-        else if (commandWord.equals("use")) {
-            
+            currentRoom.pull(command); //still need to add pull method to leverRoom class
         }
         else if (commandWord.equals("pickup")) {
-            
+            if(currentRoom.hasWeapon())
+            {
+                currentWeapon = currentRoom.getWeapon();
+            }
         }
         else if (commandWord.equals("run")) {
             int x = rand.nextInt(8);
@@ -342,11 +343,16 @@ public class Game
                 currentRoom.removeItem(thisMonster.getDesc());
                 currentRoom.getLongDescription();
             }
+            else
+            {
+                System.out.println("you failed to escape and have taken 3 damage from the monster");
+                currentHealth -= 3;
+            }
         }
         // else command not recognised.
         return wantToQuit;
     }
-    
+
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 
@@ -358,21 +364,20 @@ public class Game
         System.out.println("Here are your available commands");
         parser.showCommands();
     }
-    
+
     /** 
      * Try to in to one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
      */
     private void goRoom(Command command) 
     {
-        
 
         if(!command.hasSecondWord()) {
             // if there is no second word, we don't know where to go...
             System.out.println("Go where?");
             return;
         }
-        
+
         if(currentRoom.hasMonster())
         {
             System.out.println("You cannot leave; a monster is blocking the door!");
@@ -384,17 +389,23 @@ public class Game
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
+        if(nextRoom.isLocked())
+        {
+            System.out.println("The door is locked. You need to find some way to open it...");
+            return;
+        }
+
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
         else {
             currentRoom = nextRoom;
-            
-            if(currentRoom.isNotBossRoom())
+
+            if(!currentRoom.isBossRoom())
             {
-                //spawn(floorMonster.getDesc(), floorMonster.getSpawnRate()); //we need to fix this somehow
+                spawn(floorMonster.getDesc(), floorMonster.getSpawnRate()); //we need to fix this somehow
             }
-            
+
             if(command.getSecondWord() == "up")
             {
                 System.out.println("You have walked up the stairs to the next floor");
@@ -426,8 +437,7 @@ public class Game
             return true;  // signal that we want to quit
         }
     }
-    
- 
+
     
     /**
      * Create all the rooms.
@@ -438,7 +448,7 @@ public class Game
         createFloor2();
         createFloor3();
     }
-    
+
     private void createFloor1()
     {
         //floor one rooms
@@ -448,7 +458,7 @@ public class Game
         g1 = new Room("the northwestern hallway");
         h1 = new Room("the northern hallway");
         i1 = new Room("the northeastern hallway \n you see a menacing door to the south");
-        j1 = new Room("a room with a window \n you can see dead plants outside");
+        j1 = new Room("a room with a window \n you can see dead plants outside \n there is a mysterious lever in the corner...");
         k1 = new Room("a room with a gargoyle");
         l1 = new Room("a small corridor");
         n1 = new BossRoom("a large open room with blood on every wall \n there is a spiral staircase that leads up");
@@ -459,11 +469,11 @@ public class Game
         t1 = new Room("a room with a window \n you can see the dreary weather outside");
         u1 = new Room("the Castle foyer");
     }
-    
+
     private void createFloor2() {
         //create rooms
         d2 = new Room("a room painted brown");
-        e2 = new Room("a simple, plain room that doesn't seem to have any unique qualities");
+        e2 = new Room("a room painted white \n that doesn't seem to have any unique qualities");
         i2 = new Room("a skinny corridor");
         j2 = new Room("a room painted purple");
         k2 = new Room("a room with a large wooden cabinet /n there are many things inside");
@@ -475,9 +485,9 @@ public class Game
         w2 = new Room("a room painted black \n you see a menacing door to the east");
         x2 = new BossRoom("a circular room with much debris and rubble \n you can see a spiral staircase leading up");
     }
-    
+
     private void createFloor3() {
-        a3 = new Room("a room with piles of gold and \n a beautiful princess inside");
+        a3 = new Room("a room with piles of gold \n and a beautiful princess inside!");
         f3 = new BossRoom("a room full of dead animals and rotting corpses");
         g3 = new Room("an empty room that inspires curiosity \n you see a menacing door to the west");
         h3 = new Room("a curious room full emptiness");
@@ -488,14 +498,14 @@ public class Game
         s3 = new Room("a curiously empty room");
         x3 = new Room("a room with a staircase leading down");
     }
-    
+
     private void secretStair() {
         e1.setExit("up", e2);
         //e1.changeDesc("");
         e2.setExit("down", e1);
         //e2.changeDesc("");
     }
-    
+
     private void createExits() {
         //floor 1 exits
         u1.setExit("north", p1);
@@ -534,7 +544,7 @@ public class Game
         t1.setExit("west", s1);
         j1.setExit("west", i1);
         e1.setExit("south", j1);
-        
+
         //floor 2 exits
         q2.setExit("north", l2);
         q2.setExit("east", r2);
@@ -562,7 +572,7 @@ public class Game
         j2.setExit("north", e2);
         e2.setExit("west", d2);
         e2.setExit("south", j2);
-        
+
         //floor 3 exits
         a3.setExit("south", f3);
         f3.setExit("east", g3);
@@ -584,7 +594,7 @@ public class Game
         x3.setExit("north", s3);
         x3.setExit("down", x2);
     }
-    
+
     private void fillRooms()
     {
         //room.addItem();

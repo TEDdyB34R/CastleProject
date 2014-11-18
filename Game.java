@@ -51,6 +51,7 @@ public class Game
 
         createRooms();
         createExits();
+        fillRooms();
         currentRoom = u1;
         parser = new Parser();
         parserWithFileInput = new ParserWithFileInput();
@@ -148,9 +149,9 @@ public class Game
     }
 
     //this method will be used to randomly spawn a monster in a room
-    private void spawn(String potentialMonster, int rate)
+    private void spawn(String potentialMonster)
     {
-        int x = rand.nextInt(rate);
+        int x = rand.nextInt(4);
         if(x == 0)
         {
             thisMonster = monsterpedia.get(potentialMonster);
@@ -253,11 +254,12 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
     }
+    
     private void createMonsterpedia()
     {
-        thisMonster = new Monster("whisp", 50, 0, 0, 4);
+        thisMonster = new Monster("whisp", 50, 0, 0);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 50, 10, 10, 4);
+        thisMonster = new Monster("giant roach", 50, 10, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 
@@ -403,7 +405,7 @@ public class Game
 
             if(!currentRoom.isBossRoom())
             {
-                spawn(floorMonster.getDesc(), floorMonster.getSpawnRate()); //we need to fix this somehow
+                spawn("whisp");
             }
 
             if(command.getSecondWord() == "up")
@@ -597,6 +599,6 @@ public class Game
 
     private void fillRooms()
     {
-        //room.addItem();
+        p1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
     }
 }

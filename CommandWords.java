@@ -44,7 +44,7 @@ public class CommandWords
      */
     public void showAll() 
     {
-        System.out.println("Movement: go pickup use");
+        System.out.println("Movement: go pickup pull");
         System.out.println("Battle: attack run");
         System.out.println("Game: quit help");
         System.out.println();

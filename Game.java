@@ -331,10 +331,18 @@ public class Game
             currentRoom.pull(command); //still need to add pull method to leverRoom class
         }
         else if (commandWord.equals("pickup")) {
-            if(currentRoom.hasWeapon())
-            {
-                currentWeapon = currentRoom.getWeapon();
-            }
+
+                Weapon newWeapon = currentRoom.getWeapon();
+                if(newWeapon == null)
+                {
+                    System.out.println("There is nothing to pickup!");
+                }
+                else
+                {
+                    currentWeapon = newWeapon;
+                    System.out.println("You have picked up "+currentWeapon.getDesc());
+                }
+
         }
         else if (commandWord.equals("run")) {
             int x = rand.nextInt(8);

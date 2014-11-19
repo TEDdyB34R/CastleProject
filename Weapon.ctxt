@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.params=pDesc\ pPower\ pDefense
 comment0.target=Weapon(java.lang.String,\ int,\ int)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Weapon\r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Weapon\n
 comment1.params=
 comment1.target=void\ print()
 comment2.params=
-comment2.target=boolean\ isWeapson()
+comment2.target=boolean\ isWeapon()
 numComments=3

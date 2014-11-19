@@ -26,7 +26,7 @@ public class Weapon extends Item
         super.print();
     }
 
-    public boolean isWeapson()
+    public boolean isWeapon()
     {
         return true;
     }

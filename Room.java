@@ -171,11 +171,6 @@ public class Room
     
     public Weapon getWeapon()
     {
-        if(roomContents.isEmpty())
-        {
-            return null;
-        } 
-        
         
         for(Item i : roomContents.values())
         {
@@ -184,7 +179,6 @@ public class Room
                 return (Weapon) i;
             }
         }
-
         return null;
     }
     

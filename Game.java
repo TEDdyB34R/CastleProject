@@ -605,7 +605,18 @@ public class Game
 
     private void fillRooms()
     {
-        p1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
-        p1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
+        //floor 1 weapons
+        p1.addItem(armory.get("dull knife").getDesc(),armory.get("dull knife"));
+        s1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
+        b1.addItem(armory.get("axe").getDesc(),armory.get("axe"));
+        h1.addItem(armory.get("switchblade").getDesc(),armory.get("switchblade"));
+        j1.addItem(armory.get("helmet").getDesc(),armory.get("helmet"));
+        //floor 2 weapons
+        i2.addItem(armory.get("gold shield").getDesc(),armory.get("gold shield"));
+        m2.addItem(armory.get("recurve bow").getDesc(),armory.get("recurve bow"));
+        w2.addItem(armory.get("body armor").getDesc(),armory.get("body armor"));
+        //floor 3 weapons
+        h3.addItem(armory.get("gold sword").getDesc(),armory.get("gold sword"));
+        s3.addItem(armory.get("crossbow").getDesc(),armory.get("crossbow"));
     }
 }

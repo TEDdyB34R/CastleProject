@@ -254,17 +254,21 @@ public class Game
     
     private void createMonsterpedia()
     {
+        //Regular Monsters
         thisMonster = new Monster("whisp", 80, 0, 0);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 80, 5, 10);
+        thisMonster = new Monster("giant roach", 80, 10, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 100, 10, 5);
+        thisMonster = new Monster("serpent", 100, 12, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("troll", 100, 12, 5);
+        thisMonster = new Monster("troll", 100, 15, 2);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("witch", 120, 18, 8);
+        //Boss Monsters
+        thisMonster = new Monster("evil witch", 120, 20, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("zombie warrior", 120, 20, 10);
+        thisMonster = new Monster("zombie warrior", 120, 25, 15);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("mutant tortise", 120, 30, 20);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 
@@ -626,5 +630,10 @@ public class Game
         //floor 3 weapons
         h3.addItem(armory.get("gold sword").getDesc(),armory.get("gold sword"));
         s3.addItem(armory.get("crossbow").getDesc(),armory.get("crossbow"));
+        
+        //adding monster to boss rooms
+        n1.addItem(monsterpedia.get("evil witch").getDesc(),monsterpedia.get("evil witch"));
+        x2.addItem(monsterpedia.get("zombie warrior").getDesc(),monsterpedia.get("zombie warrios"));
+        f3.addItem(monsterpedia.get("mutant tortise").getDesc(),monsterpedia.get("mutant tortise"));
     }
 }

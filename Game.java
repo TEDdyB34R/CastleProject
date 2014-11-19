@@ -260,6 +260,14 @@ public class Game
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("giant roach", 50, 10, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("Serpent", 50, 30, 5);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("Troll", 50, 15, 10);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("Witch", 50, 20, 20);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("Zombie Warrior", 50, 25, 15);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 
     //****************************************************************************

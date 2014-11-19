@@ -418,7 +418,23 @@ public class Game
 
             if(!currentRoom.isBossRoom())
             {
-                spawn("whisp");
+                int x = rand.nextInt(4);
+                switch(x)
+                {
+                    case 0:
+                    spawn("whisp");
+                    break;
+                    case 1:
+                    spawn("giant roach");
+                    break;
+                    case 2:
+                    spawn("serpant");
+                    break;
+                    case 3:
+                    spawn("troll");
+                    break;
+                }
+                
             }
 
             if(command.getSecondWord() == "up")

@@ -231,7 +231,7 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("switchblade", 4, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("small sword", 6, 0);
+        thisWeapon = new Weapon("small sword", 5, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("axe", 6, 4);
         armory.put(thisWeapon.getDesc(),thisWeapon);
@@ -239,12 +239,10 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Crossbow", 10, 5);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Gold Sword", 12, 6);
+        thisWeapon = new Weapon("Gold Sword", 15, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
         //defensive weapons
-        thisWeapon = new Weapon("Small Shield", 0, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Helmet", 0, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("Body Armor", 0, 8);
@@ -256,17 +254,17 @@ public class Game
     
     private void createMonsterpedia()
     {
-        thisMonster = new Monster("whisp", 50, 0, 0);
+        thisMonster = new Monster("whisp", 80, 0, 0);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 50, 10, 10);
+        thisMonster = new Monster("giant roach", 80, 5, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Serpent", 50, 30, 5);
+        thisMonster = new Monster("Serpent", 100, 10, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Troll", 50, 15, 10);
+        thisMonster = new Monster("Troll", 100, 12, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Witch", 50, 20, 20);
+        thisMonster = new Monster("Witch", 120, 18, 8);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Zombie Warrior", 50, 25, 15);
+        thisMonster = new Monster("Zombie Warrior", 120, 20, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 
@@ -607,6 +605,7 @@ public class Game
 
     private void fillRooms()
     {
+        p1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
         p1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
     }
 }

@@ -15,7 +15,7 @@ public class BossRoom extends Room
     public BossRoom(String pDesc)
     {
         super(pDesc);
-        locked = true;
+        locked = false;
     }
 
     public boolean isLocked()

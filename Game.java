@@ -237,17 +237,17 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
         thisWeapon = new Weapon("recurve bow", 8, 4);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Crossbow", 10, 5);
+        thisWeapon = new Weapon("crossbow", 10, 5);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Gold Sword", 15, 6);
+        thisWeapon = new Weapon("gold sword", 15, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
         //defensive weapons
-        thisWeapon = new Weapon("Helmet", 0, 6);
+        thisWeapon = new Weapon("helmet", 0, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Body Armor", 0, 8);
+        thisWeapon = new Weapon("body armor", 0, 8);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("Gold shield", 0, 10);
+        thisWeapon = new Weapon("gold shield", 0, 10);
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
     }
@@ -258,13 +258,13 @@ public class Game
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("giant roach", 80, 5, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Serpent", 100, 10, 5);
+        thisMonster = new Monster("serpent", 100, 10, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Troll", 100, 12, 5);
+        thisMonster = new Monster("troll", 100, 12, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Witch", 120, 18, 8);
+        thisMonster = new Monster("witch", 120, 18, 8);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("Zombie Warrior", 120, 20, 10);
+        thisMonster = new Monster("zombie warrior", 120, 20, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 

@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class Character here.
+ * Write a description of class Hero here.
  * 
  * @author Ethan Dowler
  * @version prototype Character class
@@ -8,6 +8,8 @@
 public class Hero extends Item
 {
     private int maxHealth;
+    private int exp;
+    private int level;
 
     /**
      * Constructor for objects of class Character
@@ -16,14 +18,11 @@ public class Hero extends Item
     {
         super(heroName, pow, def);
         maxHealth = Hp;
+        int exp = 0;
+        int level = 1;
     }
     
-    public int getMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public void print()
+        public void print()
     {
         System.out.print("Hero: ");
         super.print();
@@ -31,8 +30,36 @@ public class Hero extends Item
         System.out.println();
     }
     
+    public int getMaxHealth()
+    {
+        return maxHealth;
+    }
+    
+    public int getExp()
+    {
+        return exp;
+    }
+    
+    public int getLevel()
+    {
+        return level;
+    }
+    
     public void addMaxHealth(int amount)
     {
         maxHealth += amount;
+    }
+    
+    public void gainExp(int amount)
+    {
+        exp += amount;
+        System.out.println("You have gained "+amount+" experience points from battle");
+    }
+    
+    public void levelUp()
+    {
+        level++;
+        System.out.println("Congratulations! You are now level "+level);
+        System.out.println("You have become stronger and wiser in battle");
     }
 }

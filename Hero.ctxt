@@ -1,11 +1,19 @@
 #BlueJ class context
 comment0.params=heroName\ Hp\ pow\ def
 comment0.target=Hero(java.lang.String,\ int,\ int,\ int)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Character\r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Character\n
 comment1.params=
-comment1.target=int\ getMaxHealth()
+comment1.target=void\ print()
 comment2.params=
-comment2.target=void\ print()
-comment3.params=amount
-comment3.target=void\ addMaxHealth(int)
-numComments=4
+comment2.target=int\ getMaxHealth()
+comment3.params=
+comment3.target=int\ getExp()
+comment4.params=
+comment4.target=int\ getLevel()
+comment5.params=amount
+comment5.target=void\ addMaxHealth(int)
+comment6.params=amount
+comment6.target=void\ gainExp(int)
+comment7.params=
+comment7.target=void\ levelUp()
+numComments=8

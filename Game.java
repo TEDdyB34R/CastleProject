@@ -9,6 +9,8 @@ import java.util.HashMap;
 public class Game
 {
 
+     
+    
     private Hero thisHero;
     private Weapon thisWeapon;
     private Monster thisMonster;
@@ -26,12 +28,15 @@ public class Game
     private Parser parser;
     private ParserWithFileInput parserWithFileInput;
 
-    //creating rooms on first floor.  Start at u1
-    static Room b1, c1, e1, g1, h1, i1, j1, k1, l1, n1, p1, q1, r1, s1, t1, u1;
+    //rooms on floor 1
+    static Room b1, c1, e1, g1, h1, i1, j1, k1, l1, p1, q1, r1, s1, t1, u1;
     //rooms on floor 2
-    static Room d2, e2, i2, j2, k2, l2, m2, n2, q2, r2, w2, x2;
+    static Room d2, e2, i2, j2, k2, l2, m2, n2, q2, r2, w2;
     //rooms on floor 3
-    static Room a3, f3, g3, h3, i3, l3, q3, r3, s3, x3;
+    static Room a3, g3, h3, i3, l3, q3, r3, s3, x3;
+    //Boss room for each respective floor
+    private BossRoom n1, x2, f3; 
+    
 
     public Game()
     {
@@ -125,6 +130,8 @@ public class Game
         //victory condition
         System.out.println("The monster has been slain!");
         System.out.println("your Hp = "+currentHealth);
+        thisHero.gainExp(10);
+        //add check level up method here
         System.out.println();
 
         //maybe add some sort of reward here? i.e.-experience points, bonus stats
@@ -251,7 +258,7 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
     }
-    
+
     private void createMonsterpedia()
     {
         //Regular Monsters
@@ -342,16 +349,16 @@ public class Game
         }
         else if (commandWord.equals("pickup")) {
 
-                Weapon newWeapon = currentRoom.getWeapon();
-                if(newWeapon == null)
-                {
-                    System.out.println("There is nothing to pickup!");
-                }
-                else
-                {
-                    currentWeapon = newWeapon;
-                    System.out.println("You have picked up "+currentWeapon.getDesc());
-                }
+            Weapon newWeapon = currentRoom.getWeapon();
+            if(newWeapon == null)
+            {
+                System.out.println("There is nothing to pickup!");
+            }
+            else
+            {
+                currentWeapon = newWeapon;
+                System.out.println("You have picked up "+currentWeapon.getDesc());
+            }
 
         }
         else if (commandWord.equals("run")) {
@@ -400,6 +407,7 @@ public class Game
         if(currentRoom.hasMonster())
         {
             System.out.println("You cannot leave; a monster is blocking the door!");
+            System.out.println("    However, you may be able to run away...");
             return;
         }
 
@@ -410,7 +418,7 @@ public class Game
 
         if(nextRoom.isLocked())
         {
-            System.out.println("The door is locked. You need to find some way to open it...");
+            System.out.println("A magical force seals the door. Maybe you are not strong enough to enter...");
             return;
         }
 
@@ -438,7 +446,7 @@ public class Game
                     spawn("troll");
                     break;
                 }
-                
+
             }
 
             if(command.getSecondWord() == "up")
@@ -473,7 +481,6 @@ public class Game
         }
     }
 
-    
     /**
      * Create all the rooms.
      */
@@ -646,7 +653,7 @@ public class Game
         //floor 3 weapons
         h3.addItem(armory.get("gold sword").getDesc(),armory.get("gold sword"));
         s3.addItem(armory.get("crossbow").getDesc(),armory.get("crossbow"));
-        
+
         //adding monster to boss rooms
         n1.addItem(monsterpedia.get("evil witch").getDesc(),monsterpedia.get("evil witch"));
         x2.addItem(monsterpedia.get("zombie warrior").getDesc(),monsterpedia.get("zombie warrios"));

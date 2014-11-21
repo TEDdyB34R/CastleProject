@@ -93,17 +93,9 @@ public class Game
         {
 
             //Battle results; prints the damage Hero deals
-            if(damageToMonster > 0)
-            {
-                thisMonster.takeDamage(damageToMonster);
-                System.out.println("you deal "+damageToMonster+" damage");
-            }
-            else
-            {
-                System.out.println("you deal 0 damage");
-                System.out.println("     maybe you should run...");
-                return;
-            }
+            thisMonster.takeDamage(damageToMonster);
+            System.out.println("you deal "+damageToMonster+" damage");
+
 
             //Hero takes damage
             if(damageToHero > 0)
@@ -139,7 +131,7 @@ public class Game
         checkLevelUp(thisHero.getExp());
         System.out.println();
         System.out.println(currentRoom.getLongDescription());
-        
+
     }
 
     //this is a method used with potions, elixers, etc.
@@ -281,7 +273,7 @@ public class Game
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("troll", 50, 16, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        
+
         //Boss Monsters
         thisMonster = new Monster("evil witch", 80, 35, 15);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
@@ -393,7 +385,7 @@ public class Game
                 }
             }
         }
-        
+
         if(currentRoom == a3)
         {
             return true;
@@ -449,7 +441,7 @@ public class Game
 
         if(currentRoom.isBossRoom())
         {
-            
+
         }
         else
         {
@@ -486,10 +478,8 @@ public class Game
             thisMonster = currentRoom.getMonster();
             thisMonster.print();
         }
-        
 
     }
-
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.
@@ -555,7 +545,7 @@ public class Game
 
     private void createFloor3() {
         a3 = new Room("a room with piles of gold \n and a beautiful princess inside! \n" + 
-        "Congratulations! You have rescued the princess and beat the game!");
+            "Congratulations! You have rescued the princess and beat the game!");
         f3 = new BossRoom("a room full of dead animals and rotting corpses");
         g3 = new Room("an empty room that inspires curiosity \n you see a menacing door to the west");
         h3 = new Room("a curious room full emptiness");
@@ -672,7 +662,6 @@ public class Game
 
         //floor 3 weapons
         i3.addItem(armory.get("golden sword").getDesc(),armory.get("golden sword"));
-
 
         //adding monster to boss rooms
         n1.addItem(monsterpedia.get("evil witch").getDesc(),monsterpedia.get("evil witch"));

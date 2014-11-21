@@ -86,7 +86,7 @@ public class Game
 
         //damage calculations
         int damageToHero = (thisMonster.getPower()-thisHero.getDefense()-currentWeapon.getDefense());
-        int damageToMonster = (thisHero.getPower()+currentWeapon.getPower()-thisMonster.getDefense());
+        int damageToMonster = (thisHero.getPower()+currentWeapon.getPower());
 
         //loop that will run until the monster is dead
         while(thisMonster.getHealth() > 0)

@@ -22,7 +22,7 @@ public class Monster extends Item
         maxHealth = pHealth;
         currentHP = maxHealth;
         mPower = pPower;
-        mDefense = mDefense;
+        mDefense = pDefense;
         mDesc = pDesc;
     }
     
@@ -34,9 +34,10 @@ public class Monster extends Item
     //this is used in the damage calculation method in Game
     public void takeDamage(int pDamage)
     {
-        if(pDamage > 0)
+        int newDamage = pDamage - mDefense;
+        if(newDamage > 0)
         {
-            currentHP -= pDamage;
+            currentHP -= newDamage;
         }
     }
     

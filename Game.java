@@ -396,7 +396,7 @@ public class Game
         
         if(currentRoom == a3)
         {
-            wantToQuit = true;
+            return true;
         }
         // else command not recognised.
         return wantToQuit;

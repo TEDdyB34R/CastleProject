@@ -138,8 +138,8 @@ public class Game
         thisHero.gainExp(10); //every monster gives 10 exp for now
         checkLevelUp(thisHero.getExp());
         System.out.println();
-
-        //maybe add some sort of reward here? i.e.-experience points, bonus stats
+        System.out.println(currentRoom.getLongDescription());
+        
     }
 
     //this is a method used with potions, elixers, etc.
@@ -607,6 +607,8 @@ public class Game
         q2.setExit("east", r2);
         l2.setExit("south", q2);
         l2.setExit("east", m2);
+        l2.setExit("west", k2);
+        k2.setExit("east", l2);
         w2.setExit("north", r2);
         w2.setExit("east", x2);
         r2.setExit("north", m2);

@@ -2,7 +2,7 @@
 /**
  * Write a description of class SpecialRoom here.
  * 
- * @author Ethan Dowerl
+ * @author Ethan Dowler
  * @version prototype room with a lever
  */
 public class LeverRoom extends Room
@@ -24,10 +24,8 @@ public class LeverRoom extends Room
                                 "you see a door at the top"); //desc of what happens
             
             changeDesc("a room with a staircase that extends from the wall");
-            Room e2 = new Room("a seemingly simple room with a staircase leading down");
-            e2.setExit("down", this);
-            e2.addItem("small sword", Game.armory.get("small sword"));
-            setExit("up", e2);
+            setExit("up", Game.e2);
+            Game.e2.setExit("down", this);
             System.out.println(this.getLongDescription());
         }
     }

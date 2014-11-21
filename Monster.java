@@ -31,13 +31,22 @@ public class Monster extends Item
         return currentHP;
     }
     
+    public int getPower()
+    {
+        return mPower;
+    }
+    
+    public int getDefense()
+    {
+        return mDefense;
+    }
+    
     //this is used in the damage calculation method in Game
     public void takeDamage(int pDamage)
     {
-        int newDamage = pDamage - mDefense;
-        if(newDamage > 0)
+        if(pDamage > 0)
         {
-            currentHP -= newDamage;
+            currentHP -= pDamage;
         }
     }
     

@@ -86,16 +86,24 @@ public class Game
 
         //damage calculations
         int damageToHero = (thisMonster.getPower()-thisHero.getDefense()-currentWeapon.getDefense());
-        int damageToMonster = (thisHero.getPower()+currentWeapon.getPower());
+        int damageToMonster = (thisHero.getPower()+currentWeapon.getPower()-thisMonster.getDefense());
 
         //loop that will run until the monster is dead
         while(thisMonster.getHealth() > 0)
         {
 
             //Battle results; prints the damage Hero deals
+            if(damageToMonster > 0)
+            {
             thisMonster.takeDamage(damageToMonster);
             System.out.println("you deal "+damageToMonster+" damage");
-
+        }
+        else
+        {
+            System.out.println("You deal 0 damage to the monster");
+            System.out.println("     maybe you should run...");
+            return;
+        }
 
             //Hero takes damage
             if(damageToHero > 0)

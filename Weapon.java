@@ -18,6 +18,8 @@ public class Weapon extends Item
     public Weapon(String pDesc, int pPower, int pDefense)
     {
         super(pDesc, pPower, pDefense);
+        power = pPower;
+        defense = pDefense;
     }
     
     public void print()
@@ -29,5 +31,15 @@ public class Weapon extends Item
     public boolean isWeapon()
     {
         return true;
+    }
+    
+    public int getPower()
+    {
+        return power;
+    }
+
+    public int getDefense()
+    {
+       return defense; 
     }
 }

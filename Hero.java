@@ -10,6 +10,8 @@ public class Hero extends Item
     private int maxHealth;
     private int exp;
     private int level;
+    private int power;
+    private int defense;
 
     /**
      * Constructor for objects of class Character
@@ -20,6 +22,8 @@ public class Hero extends Item
         maxHealth = Hp;
         int exp = 0;
         int level = 1;
+        int power = pow;
+        int defense = def;
     }
     
         public void print()
@@ -33,6 +37,16 @@ public class Hero extends Item
     public int getMaxHealth()
     {
         return maxHealth;
+    }
+    
+    public int getPower()
+    {
+        return power;
+    }
+
+    public int getDefense()
+    {
+       return defense; 
     }
     
     public int getExp()

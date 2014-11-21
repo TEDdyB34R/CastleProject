@@ -275,19 +275,19 @@ public class Game
 
         thisMonster = new Monster("whisp", 40, 9, 12);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 40, 10, 10);
+        thisMonster = new Monster("giant roach", 40, 11, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 40, 11, 8);
+        thisMonster = new Monster("serpent", 40, 13, 8);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("troll", 50, 14, 5);
+        thisMonster = new Monster("troll", 50, 16, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         
         //Boss Monsters
-        thisMonster = new Monster("evil witch", 80, 15, 15);
+        thisMonster = new Monster("evil witch", 80, 35, 15);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("zombie warrior", 100, 20, 10);
+        thisMonster = new Monster("zombie warrior", 100, 40, 120);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("mutant tortise", 120, 25, 15);
+        thisMonster = new Monster("mutant tortise", 120, 45, 25);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 
@@ -367,7 +367,7 @@ public class Game
             else
             {
                 System.out.println("You have picked up the "+newWeapon.getDesc());
-                System.out.println("     and have droped your "+currentWeapon.getDesc());
+                System.out.println("     and have dropped your "+currentWeapon.getDesc());
                 currentWeapon = newWeapon;
             }
 
@@ -543,7 +543,7 @@ public class Game
         e2 = new Room("a room painted white \n that doesn't seem to have any unique qualities");
         i2 = new Room("a skinny corridor");
         j2 = new Room("a room painted purple");
-        k2 = new Room("a room with a large wooden cabinet /n there are many things inside");
+        k2 = new Room("a room painted grey");
         l2 = new Room("a room painted green");
         m2 = new Room("a room painted blue");
         n2 = new Room("a room with a staircase leading down");

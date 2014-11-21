@@ -47,7 +47,6 @@ public class Game
         //creates our monsters in a HashMap
         monsterpedia = new HashMap<String, Monster>();
         createMonsterpedia();
-        Monster floorMonster = monsterpedia.get("whisp");
         rand = new Random();
 
         createRooms();
@@ -195,9 +194,6 @@ public class Game
     {
         switch(heroType.toLowerCase())
         {
-            case "assassin":
-            thisHero = new Hero("Assassin",80, 15, 7);
-            break;
             case "rouge":
             thisHero = new Hero("Rouge",90, 13, 8);
             break;
@@ -206,9 +202,6 @@ public class Game
             break;
             case "paladin":
             thisHero = new Hero("Paladin", 110, 7, 12);
-            break;
-            case "bulwark":
-            thisHero = new Hero("Bulwark",120, 3, 15);
             break;
             case "nikhil":
             thisHero = new Hero("Nikhil, destroyer of worlds",300, 100, 50);
@@ -286,6 +279,7 @@ public class Game
     private void createMonsterpedia()
     {
         //Regular Monsters
+<<<<<<< Updated upstream
 
         thisMonster = new Monster("whisp", 80, 1, 1);
 
@@ -295,6 +289,13 @@ public class Game
         thisMonster = new Monster("giant roach", 80, 7, 7);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("serpent", 100, 8, 5);
+=======
+        thisMonster = new Monster("whisp", 80, 11, 6);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("giant roach", 80, 8, 11);
+        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        thisMonster = new Monster("serpent", 100, 13, 5);
+>>>>>>> Stashed changes
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("troll", 100, 10, 2);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
@@ -313,11 +314,9 @@ public class Game
      * /**
      * Select your Hero class. Avaiable classes include:
      * className     Health         Power          Defense
-     * assassin           80             15             7
      * rouge              90             13             8
      * knight             100            10             10
      * paladin            110            7              12
-     * bulwark            120            3              15
      */
     public void play(String heroType) 
     {            
@@ -466,7 +465,11 @@ public class Game
 
         currentRoom = nextRoom;
 
-        if(currentRoom.isBossRoom() == false)
+        if(currentRoom.isBossRoom())
+        {
+            
+        }
+        else
         {
             int x = rand.nextInt(4);
             switch(x)
@@ -478,7 +481,7 @@ public class Game
                 spawn("giant roach");
                 break;
                 case 2:
-                spawn("serpant");
+                spawn("serpent");
                 break;
                 case 3:
                 spawn("troll");

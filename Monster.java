@@ -9,7 +9,10 @@ public class Monster extends Item
 {
     private int maxHealth;
     private int currentHP;
-
+    private int mPower;
+    private int mDefense;
+    private String mDesc;
+    
     /**
      * Constructor for objects of class Monster
      */
@@ -18,6 +21,9 @@ public class Monster extends Item
         super(pDesc, pPower, pDefense);
         maxHealth = pHealth;
         currentHP = maxHealth;
+        mPower = pPower;
+        mDefense = mDefense;
+        mDesc = pDesc;
     }
     
     public int getHealth()
@@ -36,9 +42,9 @@ public class Monster extends Item
     
     public void print()
     {
-        System.out.print("Monster: ");
-        super.print();
-        System.out.println("Health: "+this.currentHP);
+        System.out.println("Monster: "+mDesc);
+        System.out.println("Power: "+mPower+"   Defense: "+mDefense);
+        System.out.println("Health: "+currentHP);
         System.out.println();
     }
     

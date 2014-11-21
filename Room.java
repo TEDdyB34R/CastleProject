@@ -193,20 +193,11 @@ public class Room
         return null;
     }
     
-    public boolean isLocked()
-    {
-        return false;
-    }
-    
     public boolean isBossRoom()
     {
         return false;
     }
-    
-    public void unlock()
-    {
-        
-    }
+
 }
 
 

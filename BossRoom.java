@@ -17,16 +17,6 @@ public class BossRoom extends Room
         super(pDesc);
         locked = false;
     }
-
-    public boolean isLocked()
-    {
-        return locked;
-    }
-    
-    public void unlock()
-    {
-        locked = false;
-    }
     
     public boolean isBossRoom()
     {

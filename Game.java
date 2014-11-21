@@ -251,27 +251,19 @@ public class Game
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
         //offensive weapons
-        thisWeapon = new Weapon("dull knife", 2, 0);
+        thisWeapon = new Weapon("knife", 2, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("switchblade", 4, 0);
+        thisWeapon = new Weapon("sword", 5, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("small sword", 5, 0);
+        thisWeapon = new Weapon("crossbow", 8, 4);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("axe", 6, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("recurve bow", 8, 4);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("crossbow", 10, 5);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("gold sword", 15, 6);
+        thisWeapon = new Weapon("golden sword", 15, 6);
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
         //defensive weapons
-        thisWeapon = new Weapon("helmet", 0, 6);
+        thisWeapon = new Weapon("body armor", 4, 8);
         armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("body armor", 0, 8);
-        armory.put(thisWeapon.getDesc(),thisWeapon);
-        thisWeapon = new Weapon("gold shield", 0, 10);
+        thisWeapon = new Weapon("golden aegis", 7, 15);
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
     }
@@ -279,30 +271,20 @@ public class Game
     private void createMonsterpedia()
     {
         //Regular Monsters
-<<<<<<< Updated upstream
 
-        thisMonster = new Monster("whisp", 80, 1, 1);
-
-        thisMonster = new Monster("whisp", 80, 8, 12);
-
+        thisMonster = new Monster("whisp", 40, 9, 12);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 80, 7, 7);
+        thisMonster = new Monster("giant roach", 40, 10, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 100, 8, 5);
-=======
-        thisMonster = new Monster("whisp", 80, 11, 6);
+        thisMonster = new Monster("serpent", 40, 11, 8);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 80, 8, 11);
+        thisMonster = new Monster("troll", 50, 14, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 100, 13, 5);
->>>>>>> Stashed changes
-        monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("troll", 100, 10, 2);
-        monsterpedia.put(thisMonster.getDesc(), thisMonster);
+        
         //Boss Monsters
-        thisMonster = new Monster("evil witch", 120, 15, 15);
+        thisMonster = new Monster("evil witch", 80, 15, 15);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("zombie warrior", 120, 20, 10);
+        thisMonster = new Monster("zombie warrior", 100, 20, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("mutant tortise", 120, 25, 15);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
@@ -396,7 +378,7 @@ public class Game
             }
             else
             {
-                int x = rand.nextInt(6);
+                int x = rand.nextInt(5);
                 if(x == 0)
                 {
                     System.out.println("you were able to escape the monster; \n quick, pick an exit!");
@@ -454,12 +436,6 @@ public class Game
         if (nextRoom == null) 
         {
             System.out.println("There is no door!");
-            return;
-        }
-
-        if(nextRoom.isLocked())
-        {
-            System.out.println("A magical force seals the door. Maybe you are not strong enough to enter...");
             return;
         }
 
@@ -675,18 +651,17 @@ public class Game
     private void fillRooms()
     {
         //floor 1 weapons
-        p1.addItem(armory.get("dull knife").getDesc(),armory.get("dull knife"));
-        s1.addItem(armory.get("small sword").getDesc(),armory.get("small sword"));
-        b1.addItem(armory.get("axe").getDesc(),armory.get("axe"));
-        h1.addItem(armory.get("switchblade").getDesc(),armory.get("switchblade"));
-        j1.addItem(armory.get("helmet").getDesc(),armory.get("helmet"));
+        p1.addItem(armory.get("knife").getDesc(),armory.get("knife"));
+        t1.addItem(armory.get("sword").getDesc(),armory.get("sword"));
+        c1.addItem(armory.get("body armor").getDesc(),armory.get("body armor"));
+
         //floor 2 weapons
-        i2.addItem(armory.get("gold shield").getDesc(),armory.get("gold shield"));
-        m2.addItem(armory.get("recurve bow").getDesc(),armory.get("recurve bow"));
-        w2.addItem(armory.get("body armor").getDesc(),armory.get("body armor"));
+        d2.addItem(armory.get("golden aegis").getDesc(),armory.get("golden aegis"));
+        k2.addItem(armory.get("crossbow").getDesc(),armory.get("crossbow"));
+
         //floor 3 weapons
-        h3.addItem(armory.get("gold sword").getDesc(),armory.get("gold sword"));
-        s3.addItem(armory.get("crossbow").getDesc(),armory.get("crossbow"));
+        i3.addItem(armory.get("golden sword").getDesc(),armory.get("golden sword"));
+
 
         //adding monster to boss rooms
         n1.addItem(monsterpedia.get("evil witch").getDesc(),monsterpedia.get("evil witch"));

@@ -5,26 +5,22 @@ comment1.params=
 comment1.target=void\ playWithFileInput()
 comment10.params=heroType
 comment10.target=void\ play(java.lang.String)
-<<<<<<< Updated upstream
-comment10.text=\r\n\ /**\r\n\ Select\ your\ Hero\ class.\ Avaiable\ classes\ include\:\r\n\ className\ \ \ \ \ Health\ \ \ \ \ \ \ \ \ Power\ \ \ \ \ \ \ \ \ \ Defense\r\n\ assassin\ \ \ \ \ \ \ \ \ \ \ 80\ \ \ \ \ \ \ \ \ \ \ \ \ 15\ \ \ \ \ \ \ \ \ \ \ \ \ 7\r\n\ rouge\ \ \ \ \ \ \ \ \ \ \ \ \ \ 90\ \ \ \ \ \ \ \ \ \ \ \ \ 13\ \ \ \ \ \ \ \ \ \ \ \ \ 8\r\n\ knight\ \ \ \ \ \ \ \ \ \ \ \ \ 100\ \ \ \ \ \ \ \ \ \ \ \ 10\ \ \ \ \ \ \ \ \ \ \ \ \ 10\r\n\ paladin\ \ \ \ \ \ \ \ \ \ \ \ 110\ \ \ \ \ \ \ \ \ \ \ \ 7\ \ \ \ \ \ \ \ \ \ \ \ \ \ 12\r\n\ bulwark\ \ \ \ \ \ \ \ \ \ \ \ 120\ \ \ \ \ \ \ \ \ \ \ \ 3\ \ \ \ \ \ \ \ \ \ \ \ \ \ 15\r\n
-=======
 comment10.text=\n\ /**\n\ Select\ your\ Hero\ class.\ Avaiable\ classes\ include\:\n\ className\ \ \ \ \ Health\ \ \ \ \ \ \ \ \ Power\ \ \ \ \ \ \ \ \ \ Defense\n\ rouge\ \ \ \ \ \ \ \ \ \ \ \ \ \ 90\ \ \ \ \ \ \ \ \ \ \ \ \ 13\ \ \ \ \ \ \ \ \ \ \ \ \ 8\n\ knight\ \ \ \ \ \ \ \ \ \ \ \ \ 100\ \ \ \ \ \ \ \ \ \ \ \ 10\ \ \ \ \ \ \ \ \ \ \ \ \ 10\n\ paladin\ \ \ \ \ \ \ \ \ \ \ \ 110\ \ \ \ \ \ \ \ \ \ \ \ 7\ \ \ \ \ \ \ \ \ \ \ \ \ \ 12\n
->>>>>>> Stashed changes
 comment11.params=command
 comment11.target=boolean\ processCommand(Command)
-comment11.text=\r\n\ Given\ a\ command,\ process\ (that\ is\:\ execute)\ the\ command.\r\n\ @param\ command\ The\ command\ to\ be\ processed.\r\n\ @return\ true\ If\ the\ command\ ends\ the\ game,\ false\ otherwise.\r\n
+comment11.text=\n\ Given\ a\ command,\ process\ (that\ is\:\ execute)\ the\ command.\n\ @param\ command\ The\ command\ to\ be\ processed.\n\ @return\ true\ If\ the\ command\ ends\ the\ game,\ false\ otherwise.\n
 comment12.params=
 comment12.target=void\ printHelp()
-comment12.text=\r\n\ Print\ out\ some\ help\ information.\r\n\ Here\ we\ print\ some\ stupid,\ cryptic\ message\ and\ a\ list\ of\ the\ \r\n\ command\ words.\r\n
+comment12.text=\n\ Print\ out\ some\ help\ information.\n\ Here\ we\ print\ some\ stupid,\ cryptic\ message\ and\ a\ list\ of\ the\ \n\ command\ words.\n
 comment13.params=command
 comment13.target=void\ goRoom(Command)
-comment13.text=\ \r\n\ Try\ to\ in\ to\ one\ direction.\ If\ there\ is\ an\ exit,\ enter\ the\ new\r\n\ room,\ otherwise\ print\ an\ error\ message.\r\n
+comment13.text=\ \n\ Try\ to\ in\ to\ one\ direction.\ If\ there\ is\ an\ exit,\ enter\ the\ new\n\ room,\ otherwise\ print\ an\ error\ message.\n
 comment14.params=command
 comment14.target=boolean\ quit(Command)
-comment14.text=\ \r\n\ "Quit"\ was\ entered.\ Check\ the\ rest\ of\ the\ command\ to\ see\r\n\ whether\ we\ really\ quit\ the\ game.\r\n\ @return\ true,\ if\ this\ command\ quits\ the\ game,\ false\ otherwise.\r\n
+comment14.text=\ \n\ "Quit"\ was\ entered.\ Check\ the\ rest\ of\ the\ command\ to\ see\n\ whether\ we\ really\ quit\ the\ game.\n\ @return\ true,\ if\ this\ command\ quits\ the\ game,\ false\ otherwise.\n
 comment15.params=
 comment15.target=void\ createRooms()
-comment15.text=\r\n\ Create\ all\ the\ rooms.\r\n
+comment15.text=\n\ Create\ all\ the\ rooms.\n
 comment16.params=
 comment16.target=void\ createFloor1()
 comment17.params=

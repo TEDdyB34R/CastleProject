@@ -10,8 +10,8 @@ public class Hero extends Item
     private int maxHealth;
     private int exp;
     private int level;
-    private int power;
-    private int defense;
+    private int hPower;
+    private int hDefense;
 
     /**
      * Constructor for objects of class Character
@@ -22,8 +22,8 @@ public class Hero extends Item
         maxHealth = Hp;
         int exp = 0;
         int level = 1;
-        int power = pow;
-        int defense = def;
+        int hPower = pow;
+        int hDefense = def;
     }
     
         public void print()
@@ -41,12 +41,12 @@ public class Hero extends Item
     
     public int getPower()
     {
-        return power;
+        return hPower;
     }
 
     public int getDefense()
     {
-       return defense; 
+       return hDefense; 
     }
     
     public int getExp()
@@ -77,8 +77,8 @@ public class Hero extends Item
         System.out.println("You have become stronger and wiser in battle");
         System.out.println("HP+10   Power+1   Defense+1");
         maxHealth += 10;
-        power++;
-        defense++;
+        hPower++;
+        hDefense++;
         System.out.println("MaxHP: "+getMaxHealth()+"   "+
                             "Power: "+getPower()+"   "+
                             "Defense: "+getDefense());

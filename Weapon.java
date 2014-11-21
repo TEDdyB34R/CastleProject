@@ -8,8 +8,8 @@
 public class Weapon extends Item
 {
     private String desc;
-    private int power;
-    private int defense;
+    private int wPower;
+    private int wDefense;
 
 
     /**
@@ -18,8 +18,8 @@ public class Weapon extends Item
     public Weapon(String pDesc, int pPower, int pDefense)
     {
         super(pDesc, pPower, pDefense);
-        power = pPower;
-        defense = pDefense;
+        wPower = pPower;
+        wDefense = pDefense;
     }
     
     public void print()
@@ -35,11 +35,11 @@ public class Weapon extends Item
     
     public int getPower()
     {
-        return power;
+        return wPower;
     }
 
     public int getDefense()
     {
-       return defense; 
+       return wDefense; 
     }
 }

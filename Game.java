@@ -286,11 +286,11 @@ public class Game
     private void createMonsterpedia()
     {
         //Regular Monsters
-<<<<<<< HEAD
+
         thisMonster = new Monster("whisp", 80, 1, 1);
-=======
+
         thisMonster = new Monster("whisp", 80, 8, 12);
->>>>>>> origin/master
+
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("giant roach", 80, 7, 7);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
@@ -442,7 +442,7 @@ public class Game
 
         if(currentRoom.hasMonster())
         {
-            System.out.println("You cannot leave; a monster is blocking the door!");
+            System.out.println("You cannot leave; a " + currentRoom.getMonster().getDesc() + "is blocking the door!");
             System.out.println("    However, you may be able to run away...");
             return;
         }

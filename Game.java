@@ -262,20 +262,20 @@ public class Game
     private void createMonsterpedia()
     {
         //Regular Monsters
-        thisMonster = new Monster("whisp", 80, 0, 0);
+        thisMonster = new Monster("whisp", 80, 1, 1);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 80, 10, 10);
+        thisMonster = new Monster("giant roach", 80, 7, 7);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 100, 12, 5);
+        thisMonster = new Monster("serpent", 100, 8, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("troll", 100, 15, 2);
+        thisMonster = new Monster("troll", 100, 10, 2);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         //Boss Monsters
-        thisMonster = new Monster("evil witch", 120, 20, 10);
+        thisMonster = new Monster("evil witch", 120, 15, 15);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("zombie warrior", 120, 25, 15);
+        thisMonster = new Monster("zombie warrior", 120, 20, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("mutant tortise", 120, 30, 20);
+        thisMonster = new Monster("mutant tortise", 120, 25, 15);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 

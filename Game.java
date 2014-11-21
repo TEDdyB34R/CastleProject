@@ -176,11 +176,12 @@ public class Game
         switch(experiencePoints)
         {
             case 30:
-            case 70:
-            case 120:
+            case 60:
+            case 100:
+            case 140:
             case 180:
-            case 250:
-            case 330:
+            case 230:
+            case 280:
             thisHero.levelUp();
             currentHealth = thisHero.getMaxHealth();
             break;

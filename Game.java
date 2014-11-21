@@ -480,6 +480,8 @@ public class Game
             thisMonster = currentRoom.getMonster();
             thisMonster.print();
         }
+        
+
     }
 
     /** 
@@ -546,7 +548,8 @@ public class Game
     }
 
     private void createFloor3() {
-        a3 = new Room("a room with piles of gold \n and a beautiful princess inside!");
+        a3 = new Room("a room with piles of gold \n and a beautiful princess inside! \n" + 
+        "Congratulations! You have rescued the princess and beat the game!");
         f3 = new BossRoom("a room full of dead animals and rotting corpses");
         g3 = new Room("an empty room that inspires curiosity \n you see a menacing door to the west");
         h3 = new Room("a curious room full emptiness");

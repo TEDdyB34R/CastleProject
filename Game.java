@@ -393,6 +393,11 @@ public class Game
                 }
             }
         }
+        
+        if(currentRoom == a3)
+        {
+            wantToQuit = true;
+        }
         // else command not recognised.
         return wantToQuit;
     }

@@ -18,7 +18,13 @@ public class LeverRoom extends Room
     
     public void pull(Command command)
     {
-        if(command.getSecondWord().equals("lever"))
+        if(!command.hasSecondWord())
+        {
+            System.out.println("Pull what?");
+            return;
+        }
+        
+        else if(command.getSecondWord().equals("lever"))
         {
             System.out.println("you pull the lever and a staircase slowly extends from the wall \n" +
                                 "you see a door at the top"); //desc of what happens

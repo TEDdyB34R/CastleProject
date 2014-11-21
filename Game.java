@@ -656,7 +656,7 @@ public class Game
 
         //adding monster to boss rooms
         n1.addItem(monsterpedia.get("evil witch").getDesc(),monsterpedia.get("evil witch"));
-        x2.addItem(monsterpedia.get("zombie warrior").getDesc(),monsterpedia.get("zombie warrios"));
+        x2.addItem(monsterpedia.get("zombie warrior").getDesc(),monsterpedia.get("zombie warrior"));
         f3.addItem(monsterpedia.get("mutant tortise").getDesc(),monsterpedia.get("mutant tortise"));
     }
 }

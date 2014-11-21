@@ -20,10 +20,10 @@ public class Hero extends Item
     {
         super(heroName, pow, def);
         maxHealth = Hp;
-        int exp = 0;
-        int level = 1;
-        int hPower = pow;
-        int hDefense = def;
+        exp = 0;
+        level = 1;
+        hPower = pow;
+        hDefense = def;
     }
     
         public void print()

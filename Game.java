@@ -278,21 +278,21 @@ public class Game
     {
         //Regular Monsters
 
-        thisMonster = new Monster("whisp", 40, 9, 12);
+        thisMonster = new Monster("whisp", 40, 9, 3);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 40, 11, 10);
+        thisMonster = new Monster("giant roach", 40, 11, 4);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 40, 10, 8);
+        thisMonster = new Monster("serpent", 40, 10, 1);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("troll", 50, 11, 5);
+        thisMonster = new Monster("troll", 50, 11, 2);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
 
         //Boss Monsters
-        thisMonster = new Monster("evil witch", 80, 15, 10);
+        thisMonster = new Monster("evil witch", 65, 15, 6);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("zombie warrior", 100, 20, 10);
+        thisMonster = new Monster("zombie warrior", 75, 20, 8);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("mutant tortise", 120, 25, 10);
+        thisMonster = new Monster("mutant tortise", 85, 25, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 

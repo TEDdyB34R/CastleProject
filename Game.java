@@ -9,8 +9,6 @@ import java.util.HashMap;
 public class Game
 {
 
-     
-    
     private Hero thisHero;
     private Weapon thisWeapon;
     private Monster thisMonster;
@@ -36,7 +34,6 @@ public class Game
     static Room a3, g3, h3, i3, l3, q3, r3, s3, x3;
     //Boss room for each respective floor
     private BossRoom n1, x2, f3; 
-    
 
     public Game()
     {
@@ -45,7 +42,7 @@ public class Game
         createArmory();
 
         inventory = new HashMap<String, Weapon>();
-        inventory.put(armory.get("fists").getDesc(), armory.get("fists"));
+        inventory.put(armory.get("gloves").getDesc(), armory.get("gloves"));
 
         //creates our monsters in a HashMap
         monsterpedia = new HashMap<String, Monster>();
@@ -65,7 +62,7 @@ public class Game
     {            
         chooseHero("knight");
         currentHealth = thisHero.getMaxHealth();
-        currentWeapon = armory.get("fists");
+        currentWeapon = armory.get("gloves");
 
         printWelcome();
         // Enter the main command loop.  Here we repeatedly read commands and
@@ -80,26 +77,33 @@ public class Game
     //*****************************************
     private void attack()
     {
-        System.out.println("You valiantly attack the monster!");
+        if(!currentRoom.hasMonster())
+        {
+            System.out.println("There is nothing in the room to attack...");
+            return;
+        }
+        thisMonster = currentRoom.getMonster();
+        System.out.println("You valiantly attack the "+thisMonster.getDesc()+"!");
 
         //damage calculations
-        int damageToHero = thisMonster.getPower() - thisHero.getDefense() - currentWeapon.getDefense();
-        int damageToMonster = thisHero.getPower() + currentWeapon.getPower() - thisMonster.getDefense();
+        int damageToHero = (thisMonster.getPower()-thisHero.getDefense()-currentWeapon.getDefense());
+        int damageToMonster = (thisHero.getPower()+currentWeapon.getPower()-thisMonster.getDefense());
 
         //loop that will run until the monster is dead
         while(thisMonster.getHealth() > 0)
         {
-            //monster takes damage; see Monster class
-            thisMonster.takeDamage(thisHero.getPower()+currentWeapon.getPower());
 
             //Battle results; prints the damage Hero deals
             if(damageToMonster > 0)
             {
+                thisMonster.takeDamage(damageToMonster);
                 System.out.println("you deal "+damageToMonster+" damage");
             }
             else
             {
                 System.out.println("you deal 0 damage");
+                System.out.println("     maybe you should run...");
+                return;
             }
 
             //Hero takes damage
@@ -125,13 +129,15 @@ public class Game
         }
 
         //monster is removed from the room
+        thisMonster.refreshHealth();
         currentRoom.removeItem(thisMonster.getDesc());
+        thisMonster = null;
 
         //victory condition
         System.out.println("The monster has been slain!");
         System.out.println("your Hp = "+currentHealth);
-        thisHero.gainExp(10);
-        //add check level up method here
+        thisHero.gainExp(10); //every monster gives 10 exp for now
+        checkLevelUp(thisHero.getExp());
         System.out.println();
 
         //maybe add some sort of reward here? i.e.-experience points, bonus stats
@@ -161,8 +167,26 @@ public class Game
         if(x == 0)
         {
             thisMonster = monsterpedia.get(potentialMonster);
-            thisMonster.refreshHealth();
             currentRoom.addItem(thisMonster.getDesc(), thisMonster);
+        }
+    }
+
+    //this will let the player level up when they hit certain exp milestones
+    private void checkLevelUp(int experiencePoints)
+    {
+        switch(experiencePoints)
+        {
+            case 30:
+            case 70:
+            case 120:
+            case 180:
+            case 250:
+            case 330:
+            thisHero.levelUp();
+            currentHealth = thisHero.getMaxHealth();
+            break;
+            default:
+            return;
         }
     }
 
@@ -230,7 +254,7 @@ public class Game
     private void createArmory() 
     {
         //default weapon
-        thisWeapon = new Weapon("fists", 0, 0);
+        thisWeapon = new Weapon("gloves", 0, 0);
         armory.put(thisWeapon.getDesc(),thisWeapon);
 
         //offensive weapons
@@ -262,7 +286,7 @@ public class Game
     private void createMonsterpedia()
     {
         //Regular Monsters
-        thisMonster = new Monster("whisp", 80, 0, 0);
+        thisMonster = new Monster("whisp", 80, 8, 12);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
         thisMonster = new Monster("giant roach", 80, 10, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
@@ -296,7 +320,7 @@ public class Game
         //I modified the printWelcome() (incomplete) and added chooseHero()
         chooseHero(heroType);
         currentHealth = thisHero.getMaxHealth();
-        currentWeapon = armory.get("fists");
+        currentWeapon = armory.get("gloves");
 
         printWelcome();
 
@@ -356,23 +380,31 @@ public class Game
             }
             else
             {
+                System.out.println("You have picked up the "+newWeapon.getDesc());
+                System.out.println("     and have droped your "+currentWeapon.getDesc());
                 currentWeapon = newWeapon;
-                System.out.println("You have picked up "+currentWeapon.getDesc());
             }
 
         }
         else if (commandWord.equals("run")) {
-            int x = rand.nextInt(8);
-            if(x == 0)
+            if(currentRoom.isBossRoom())
             {
-                System.out.println("you were able to escape the monster; \n quick, pick an exit!");
-                currentRoom.removeItem(thisMonster.getDesc());
-                currentRoom.getLongDescription();
+                System.out.println("You cannot escape this monster! It's too strong!");
             }
             else
             {
-                System.out.println("you failed to escape and have taken 3 damage from the monster");
-                currentHealth -= 3;
+                int x = rand.nextInt(6);
+                if(x == 0)
+                {
+                    System.out.println("you were able to escape the monster; \n quick, pick an exit!");
+                    currentRoom.removeItem(thisMonster.getDesc());
+                    System.out.println(currentRoom.getLongDescription());
+                }
+                else
+                {
+                    System.out.println("you failed to escape and have taken 3 damage from the monster");
+                    currentHealth -= 3;
+                }
             }
         }
         // else command not recognised.
@@ -416,52 +448,54 @@ public class Game
         // Try to leave current room.
         Room nextRoom = currentRoom.getExit(direction);
 
+        if (nextRoom == null) 
+        {
+            System.out.println("There is no door!");
+            return;
+        }
+
         if(nextRoom.isLocked())
         {
             System.out.println("A magical force seals the door. Maybe you are not strong enough to enter...");
             return;
         }
 
-        if (nextRoom == null) {
-            System.out.println("There is no door!");
+        currentRoom = nextRoom;
+
+        if(currentRoom.isBossRoom() == false)
+        {
+            int x = rand.nextInt(4);
+            switch(x)
+            {
+                case 0:
+                spawn("whisp");
+                break;
+                case 1:
+                spawn("giant roach");
+                break;
+                case 2:
+                spawn("serpant");
+                break;
+                case 3:
+                spawn("troll");
+                break;
+            }
+
         }
-        else {
-            currentRoom = nextRoom;
 
-            if(!currentRoom.isBossRoom())
-            {
-                int x = rand.nextInt(4);
-                switch(x)
-                {
-                    case 0:
-                    spawn("whisp");
-                    break;
-                    case 1:
-                    spawn("giant roach");
-                    break;
-                    case 2:
-                    spawn("serpant");
-                    break;
-                    case 3:
-                    spawn("troll");
-                    break;
-                }
-
-            }
-
-            if(command.getSecondWord() == "up")
-            {
-                System.out.println("You have walked up the stairs to the next floor");
-            }
-            if(command.getSecondWord() == "down")
-            {
-                System.out.println("You have walked down the stairs to the lower floor");
-            }
-            System.out.println(currentRoom.getLongDescription());
-            if(currentRoom.hasMonster())
-            {
-                thisMonster.print();
-            }
+        if(command.getSecondWord() == "up")
+        {
+            System.out.println("You have walked up the stairs to the next floor");
+        }
+        if(command.getSecondWord() == "down")
+        {
+            System.out.println("You have walked down the stairs to the lower floor");
+        }
+        System.out.println(currentRoom.getLongDescription());
+        if(currentRoom.hasMonster())
+        {
+            thisMonster = currentRoom.getMonster();
+            thisMonster.print();
         }
     }
 
@@ -539,13 +573,6 @@ public class Game
         r3 = new Room("a room that's curiously empty");
         s3 = new Room("a curiously empty room");
         x3 = new Room("a room with a staircase leading down");
-    }
-
-    private void secretStair() {
-        e1.setExit("up", e2);
-        //e1.changeDesc("");
-        e2.setExit("down", e1);
-        //e2.changeDesc("");
     }
 
     private void createExits() {

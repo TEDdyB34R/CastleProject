@@ -61,5 +61,12 @@ public class Hero extends Item
         level++;
         System.out.println("Congratulations! You are now level "+level);
         System.out.println("You have become stronger and wiser in battle");
+        System.out.println("HP+10   Power+1   Defense+1");
+        maxHealth += 10;
+        power++;
+        defense++;
+        System.out.println("MaxHP: "+getMaxHealth()+"   "+
+                            "Power: "+getPower()+"   "+
+                            "Defense: "+getDefense());
     }
 }

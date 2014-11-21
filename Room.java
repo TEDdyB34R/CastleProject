@@ -171,12 +171,23 @@ public class Room
     
     public Weapon getWeapon()
     {
-        
         for(Item i : roomContents.values())
         {
             if(i.isWeapon())
             {
                 return (Weapon) i;
+            }
+        }
+        return null;
+    }
+    
+    public Monster getMonster()
+    {
+        for(Item i : roomContents.values())
+        {
+            if(i.isMonster())
+            {
+                return (Monster) i;
             }
         }
         return null;

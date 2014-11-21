@@ -9,8 +9,8 @@ public abstract class Item
 {
     // instance variables - replace the example below with your own
     private String desc;
-    private int power;
-    private int defense;
+    static int power;
+    static int defense;
 
     /**
      * Constructor for objects of class Item
@@ -25,8 +25,8 @@ public abstract class Item
     public void print()
     {
         System.out.println(desc);
-        System.out.print("Power: "+power+"   ");
-        System.out.println("Defense: "+defense);
+        System.out.print("Power: "+this.power+"   ");
+        System.out.println("Defense: "+this.defense);
     }
 
     public String getDesc()

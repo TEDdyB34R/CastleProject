@@ -23,12 +23,12 @@ public class LeverRoom extends Room
             System.out.println("you pull the lever and a staircase slowly extends from the wall \n" +
                                 "you see a door at the top"); //desc of what happens
             
-            //e1.changeDesc("");
+            changeDesc("a room with a staircase that extends from the wall");
             Room e2 = new Room("a seemingly simple room with a staircase leading down");
             e2.setExit("down", this);
             e2.addItem("small sword", Game.armory.get("small sword"));
-            //e2.changeDesc("");
             setExit("up", e2);
+            System.out.println(this.getLongDescription());
         }
     }
     

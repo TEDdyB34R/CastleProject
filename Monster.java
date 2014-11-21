@@ -8,7 +8,7 @@
 public class Monster extends Item
 {
     private int maxHealth;
-    private int currentHealth;
+    private int currentHP;
 
     /**
      * Constructor for objects of class Monster
@@ -17,21 +17,20 @@ public class Monster extends Item
     {
         super(pDesc, pPower, pDefense);
         maxHealth = pHealth;
-        currentHealth = maxHealth;
+        currentHP = maxHealth;
     }
     
     public int getHealth()
     {
-        return currentHealth;
+        return currentHP;
     }
     
     //this is used in the damage calculation method in Game
     public void takeDamage(int pDamage)
     {
-        int damage = pDamage - super.getDefense();
-        if(damage > 0)
+        if(pDamage > 0)
         {
-            currentHealth -= damage;
+            currentHP -= pDamage;
         }
     }
     
@@ -39,7 +38,7 @@ public class Monster extends Item
     {
         System.out.print("Monster: ");
         super.print();
-        System.out.println("Health: "+currentHealth);
+        System.out.println("Health: "+this.currentHP);
         System.out.println();
     }
     
@@ -50,7 +49,7 @@ public class Monster extends Item
     
     public void refreshHealth()
     {
-        currentHealth = maxHealth;
+        currentHP = maxHealth;
     }
     
 }

@@ -88,6 +88,13 @@ public class Game
         int damageToHero = (thisMonster.getPower()-thisHero.getDefense()-currentWeapon.getDefense());
         int damageToMonster = (thisHero.getPower()+currentWeapon.getPower()-thisMonster.getDefense());
 
+        if(damageToHero == 0 && damageToMonster == 0)
+        {
+            System.out.println("You and the monster have come to a draw \n"
+            +"and you barely escaped with your life");
+            currentRoom = u1;
+            return;
+        }
         //loop that will run until the monster is dead
         while(thisMonster.getHealth() > 0)
         {
@@ -95,15 +102,13 @@ public class Game
             //Battle results; prints the damage Hero deals
             if(damageToMonster > 0)
             {
-            thisMonster.takeDamage(damageToMonster);
-            System.out.println("you deal "+damageToMonster+" damage");
-        }
-        else
-        {
-            System.out.println("You deal 0 damage to the monster");
-            System.out.println("     maybe you should run...");
-            return;
-        }
+                thisMonster.takeDamage(damageToMonster);
+                System.out.println("you deal "+damageToMonster+" damage");
+            }
+            else
+            {
+                System.out.println("You deal 0 damage to the monster");
+            }
 
             //Hero takes damage
             if(damageToHero > 0)
@@ -488,6 +493,7 @@ public class Game
         }
 
     }
+
     /** 
      * "Quit" was entered. Check the rest of the command to see
      * whether we really quit the game.

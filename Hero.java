@@ -74,6 +74,7 @@ public class Hero extends Item
     {
         level += 1;
         System.out.println("Congratulations! You are now level "+level);
+        System.out.println("     your wounds have magically been healed");
         System.out.println("You have become stronger and wiser in battle");
         System.out.println("HP+10   Power+1   Defense+1");
         maxHealth += 10;

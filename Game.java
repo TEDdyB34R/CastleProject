@@ -147,7 +147,7 @@ public class Game
 
     }
 
-    //this is a method used with potions, elixers, etc.
+    //this is a method used with potions, elixers, etc. if we add them
     private void heal(int healAmount)
     {
         currentHealth += healAmount;
@@ -188,7 +188,7 @@ public class Game
             case 230:
             case 280:
             thisHero.levelUp();
-            currentHealth = thisHero.getMaxHealth();
+            currentHealth = thisHero.getMaxHealth(); //heals hero on level up
             break;
             default:
             return;
@@ -201,13 +201,13 @@ public class Game
         switch(heroType.toLowerCase())
         {
             case "rouge":
-            thisHero = new Hero("Rouge",90, 13, 8);
+            thisHero = new Hero("Rouge",90, 13, 5);
             break;
             case "knight":
-            thisHero = new Hero("Knight",100, 10, 10);
+            thisHero = new Hero("Knight",100, 10, 7);
             break;
             case "paladin":
-            thisHero = new Hero("Paladin", 110, 7, 12);
+            thisHero = new Hero("Paladin", 110, 7, 9);
             break;
             case "nikhil":
             thisHero = new Hero("Nikhil, destroyer of worlds",300, 100, 50);
@@ -278,21 +278,21 @@ public class Game
     {
         //Regular Monsters
 
-        thisMonster = new Monster("whisp", 40, 9, 3);
+        thisMonster = new Monster("whisp", 40, 9, 5);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("giant roach", 40, 11, 4);
+        thisMonster = new Monster("giant roach", 40, 10, 6);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("serpent", 40, 10, 1);
+        thisMonster = new Monster("serpent", 40, 11, 4);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("troll", 50, 11, 2);
+        thisMonster = new Monster("troll", 50, 15, 3);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
 
         //Boss Monsters
-        thisMonster = new Monster("evil witch", 65, 15, 6);
+        thisMonster = new Monster("evil witch", 65, 18, 8);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("zombie warrior", 75, 20, 8);
+        thisMonster = new Monster("zombie warrior", 75, 23, 10);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
-        thisMonster = new Monster("mutant tortise", 85, 25, 10);
+        thisMonster = new Monster("mutant tortise", 85, 28, 12);
         monsterpedia.put(thisMonster.getDesc(), thisMonster);
     }
 
@@ -435,7 +435,7 @@ public class Game
         if(currentRoom.hasMonster())
         {
             System.out.println("You cannot leave; a " + currentRoom.getMonster().getDesc() + "is blocking the door!");
-            System.out.println("    However, you may be able to run away...");
+            System.out.println("    However, you MAY be able to run away...");
             return;
         }
 

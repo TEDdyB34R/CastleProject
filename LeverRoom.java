@@ -30,7 +30,7 @@ public class LeverRoom extends Room
                                 "you see a door at the top"); //desc of what happens
             
             changeDesc("a room with a staircase that extends from the wall");
-            setExit("up", Game.e2);
+            this.setExit("up", Game.e2);
             Game.e2.setExit("down", this);
             System.out.println(this.getLongDescription());
         }
